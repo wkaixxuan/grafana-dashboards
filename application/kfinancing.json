@@ -37,14 +37,17 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 13694,
   "graphTooltip": 1,
-  "id": 97,
-  "iteration": 1648109663763,
+  "id": 745,
+  "iteration": 1648115464570,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -53,13 +56,15 @@
       },
       "id": 125,
       "panels": [],
-      "repeat": "pod_name",
+      "repeat": "pod",
       "title": "Quick Facts",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -90,7 +95,6 @@
         "y": 1
       },
       "id": 63,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -108,27 +112,29 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "process_uptime_seconds{application='kfinancing', pod_name='$pod_name'}",
+          "expr": "process_uptime_seconds{application='kfinancing', pod='$pod'}",
           "format": "time_series",
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{pod_name}}",
+          "legendFormat": "{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 14400
         }
       ],
-      "title": "Uptime $pod_name",
+      "title": "Uptime $pod",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -169,7 +175,6 @@
         "y": 1
       },
       "id": 92,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -189,22 +194,22 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "process_start_time_seconds{application='kfinancing', pod_name='$pod_name'}*1000",
+          "expr": "process_start_time_seconds{application='kfinancing', pod='$pod'}*1000",
           "format": "time_series",
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Uptime_{{pod_name}}",
+          "legendFormat": "Uptime_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 14400
         }
       ],
-      "title": "Start time $pod_name",
+      "title": "Start time $pod",
       "type": "stat"
     },
     {
@@ -243,7 +248,6 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -317,15 +321,16 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "container_cpu_load_average_10s{container='kfinancing', pod_name='$pod_name'}",
+          "expr": "container_cpu_load_average_10s{container='kfinancing', pod='$pod'}",
           "interval": "",
-          "legendFormat": "cpu_load_{{pod_name}}",
+          "legendFormat": "cpu_load_{{pod}}",
           "refId": "A"
         }
       ],
@@ -337,12 +342,14 @@
           "visible": true
         }
       ],
-      "title": "Cpu load 10s $pod_name",
+      "title": "Cpu load 10s $pod",
       "type": "timeseries"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -416,7 +423,6 @@
         "y": 10
       },
       "id": 65,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -426,7 +432,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
@@ -437,17 +444,19 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "HeapUsed_$pod_name",
+          "legendFormat": "HeapUsed_$pod",
           "refId": "A",
           "step": 14400
         }
       ],
-      "title": " Heap used $pod_name",
+      "title": " Heap used $pod",
       "type": "timeseries"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -531,7 +540,6 @@
         "y": 10
       },
       "id": 75,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -541,7 +549,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
@@ -552,17 +561,20 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Non-HeapUsage_$pod_name",
+          "legendFormat": "Non-HeapUsage_$pod",
           "refId": "A",
           "step": 14400
         }
       ],
-      "title": "Non-Heap used $pod_name",
+      "title": "Non-Heap used $pod",
       "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -571,7 +583,7 @@
       },
       "id": 129,
       "panels": [],
-      "repeat": "pod_name",
+      "repeat": "pod",
       "title": "JVM Memory Pools (Heap)",
       "type": "row"
     },
@@ -580,18 +592,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "editable": true,
       "error": false,
       "fill": 1,
       "fillGradient": 0,
       "grid": {
         "leftLogBase": 1,
-        "leftMax": null,
-        "leftMin": null,
-        "rightLogBase": 1,
-        "rightMax": null,
-        "rightMin": null
+        "rightLogBase": 1
       },
       "gridPos": {
         "h": 9,
@@ -621,7 +632,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -633,7 +644,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "jvm_memory_committed_bytes{pod_name=\"$pod_name\", id=\"$jvm_memory_pool_heap\"}",
+          "expr": "jvm_memory_committed_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_heap\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -645,7 +656,7 @@
         },
         {
           "exemplar": true,
-          "expr": "jvm_memory_max_bytes{pod_name=\"$pod_name\", id=\"$jvm_memory_pool_heap\"}",
+          "expr": "jvm_memory_max_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_heap\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -657,10 +668,8 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
-      "title": "$jvm_memory_pool_heap $pod_name",
+      "title": "$jvm_memory_pool_heap $pod",
       "tooltip": {
         "msResolution": false,
         "shared": true,
@@ -670,9 +679,7 @@
       "type": "graph",
       "x-axis": true,
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -684,29 +691,26 @@
       "yaxes": [
         {
           "format": "bytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": 0,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -715,12 +719,14 @@
       },
       "id": 127,
       "panels": [],
-      "repeat": null,
       "title": "JVM Memory",
       "type": "row"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -791,50 +797,52 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_memory_used_bytes{application=\"kfinancing\", area=\"heap\"})",
+          "expr": "sum by (pod) (jvm_memory_used_bytes{application=\"kfinancing\", area=\"heap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "heap_used_{{pod_name}}",
+          "legendFormat": "heap_used_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_memory_committed_bytes{application=\"kfinancing\", area=\"heap\"})",
+          "expr": "sum by (pod) (jvm_memory_committed_bytes{application=\"kfinancing\", area=\"heap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "committed_{{pod_name}}",
+          "legendFormat": "committed_{{pod}}",
           "refId": "B",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_memory_max_bytes{application=\"kfinancing\", area=\"heap\"})",
+          "expr": "sum by (pod) (jvm_memory_max_bytes{application=\"kfinancing\", area=\"heap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "max_{{pod_name}}",
+          "legendFormat": "max_{{pod}}",
           "refId": "C",
           "step": 2400
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "JVM Heap",
       "type": "timeseries"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -905,50 +913,52 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name)(jvm_memory_used_bytes{application='kfinancing', area=\"nonheap\"})",
+          "expr": "sum by (pod)(jvm_memory_used_bytes{application='kfinancing', area=\"nonheap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "used_{{pod_name}}",
+          "legendFormat": "used_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_memory_committed_bytes{application='kfinancing', area=\"nonheap\"})",
+          "expr": "sum by (pod) (jvm_memory_committed_bytes{application='kfinancing', area=\"nonheap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "committed_{{pod_name}}",
+          "legendFormat": "committed_{{pod}}",
           "refId": "B",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_memory_max_bytes{application='kfinancing', area=\"nonheap\"})",
+          "expr": "sum by (pod) (jvm_memory_max_bytes{application='kfinancing', area=\"nonheap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "max_{{pod_name}}",
+          "legendFormat": "max_{{pod}}",
           "refId": "C",
           "step": 2400
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "JVM Non-Heap",
       "type": "timeseries"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1019,45 +1029,44 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_memory_used_bytes{application='kfinancing'})",
+          "expr": "sum by (pod) (jvm_memory_used_bytes{application='kfinancing'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "used_{{pod_name}}",
+          "legendFormat": "used_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_memory_committed_bytes{application='kfinancing'})",
+          "expr": "sum by (pod) (jvm_memory_committed_bytes{application='kfinancing'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "committed_{{pod_name}}",
+          "legendFormat": "committed_{{pod}}",
           "refId": "B",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_memory_max_bytes{application='kfinancing'})",
+          "expr": "sum by (pod) (jvm_memory_max_bytes{application='kfinancing'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "max_{{pod_name}}",
+          "legendFormat": "max_{{pod}}",
           "refId": "C",
           "step": 2400
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "JVM Total",
       "type": "timeseries"
     },
@@ -1101,7 +1110,6 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1192,15 +1200,16 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "(sum by (pod_name) (jvm_memory_used_bytes{application='kfinancing', area='heap'})* 100) /sum by (pod_name) (jvm_memory_max_bytes{application='kfinancing', area='heap'}) ",
+          "expr": "(sum by (pod) (jvm_memory_used_bytes{application='kfinancing', area='heap'})* 100) /sum by (pod) (jvm_memory_max_bytes{application='kfinancing', area='heap'}) ",
           "interval": "",
-          "legendFormat": "heap_usage_{{pod_name}}",
+          "legendFormat": "heap_usage_{{pod}}",
           "refId": "HeapUsage"
         }
       ],
@@ -1255,7 +1264,6 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1321,15 +1329,16 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "(sum by (pod_name) (jvm_memory_used_bytes{application='kfinancing', area='nonheap'})* 100) /sum by (pod_name) (jvm_memory_max_bytes{application='kfinancing', area='nonheap'}) ",
+          "expr": "(sum by (pod) (jvm_memory_used_bytes{application='kfinancing', area='nonheap'})* 100) /sum by (pod) (jvm_memory_max_bytes{application='kfinancing', area='nonheap'}) ",
           "interval": "",
-          "legendFormat": "nonheap_usage_{{pod_name}}",
+          "legendFormat": "nonheap_usage_{{pod}}",
           "refId": "NonHeapUsage"
         }
       ],
@@ -1346,7 +1355,10 @@
     },
     {
       "collapsed": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1355,7 +1367,7 @@
       },
       "id": 130,
       "panels": [],
-      "repeat": "pod_name",
+      "repeat": "pod",
       "title": "JVM Memory Pools (Non-Heap)",
       "type": "row"
     },
@@ -1364,18 +1376,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "editable": true,
       "error": false,
       "fill": 1,
       "fillGradient": 0,
       "grid": {
         "leftLogBase": 1,
-        "leftMax": null,
-        "leftMin": null,
-        "rightLogBase": 1,
-        "rightMax": null,
-        "rightMin": null
+        "rightLogBase": 1
       },
       "gridPos": {
         "h": 9,
@@ -1405,7 +1416,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1417,46 +1428,44 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "jvm_memory_used_bytes{pod_name=\"$pod_name\", id=\"$jvm_memory_pool_nonheap\"}",
+          "expr": "jvm_memory_used_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_nonheap\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "used {{pod_name}}",
+          "legendFormat": "used {{pod}}",
           "metric": "",
           "refId": "A",
           "step": 1800
         },
         {
           "exemplar": true,
-          "expr": "jvm_memory_committed_bytes{pod_name=\"$pod_name\", id=\"$jvm_memory_pool_nonheap\"}",
+          "expr": "jvm_memory_committed_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_nonheap\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "commited  {{pod_name}}",
+          "legendFormat": "commited  {{pod}}",
           "metric": "",
           "refId": "B",
           "step": 1800
         },
         {
           "exemplar": true,
-          "expr": "jvm_memory_max_bytes{pod_name=\"$pod_name\", id=\"$jvm_memory_pool_nonheap\"}",
+          "expr": "jvm_memory_max_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_nonheap\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "max  {{pod_name}}",
+          "legendFormat": "max  {{pod}}",
           "metric": "",
           "refId": "C",
           "step": 1800
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
-      "title": "$jvm_memory_pool_nonheap $pod_name",
+      "title": "$jvm_memory_pool_nonheap $pod",
       "tooltip": {
         "msResolution": false,
         "shared": true,
@@ -1466,9 +1475,7 @@
       "type": "graph",
       "x-axis": true,
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1480,29 +1487,22 @@
       "yaxes": [
         {
           "format": "bytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": 0,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1554,7 +1554,6 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1634,17 +1633,18 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "multi"
+          "mode": "multi",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "(sum by (pod_name, interface) (increase(dubbo_request_success_total{application='kfinancing'}[2m])/120))/(sum by (pod_name, interface) (increase(dubbo_request_total{application='kfinancing'}[2m])/120))",
+          "expr": "(sum by (pod, interface) (increase(dubbo_request_success_total{application='kfinancing'}[2m])/120))/(sum by (pod, interface) (increase(dubbo_request_total{application='kfinancing'}[2m])/120))",
           "instant": false,
           "interval": "",
-          "legendFormat": "{{pod_name}}_{{interface}}",
+          "legendFormat": "{{pod}}_{{interface}}",
           "refId": "DubboRequestRate"
         }
       ],
@@ -1698,7 +1698,6 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1772,15 +1771,16 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name, interface, method) (dubbo_request_latency_seconds{application='kfinancing', quantile='0.9'}*1000)",
+          "expr": "sum by (pod, interface, method) (dubbo_request_latency_seconds{application='kfinancing', quantile='0.9'}*1000)",
           "interval": "",
-          "legendFormat": "{{pod_name}}_{{interface}}.{{method}}",
+          "legendFormat": "{{pod}}_{{interface}}.{{method}}",
           "refId": "A"
         }
       ],
@@ -1834,7 +1834,6 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1892,8 +1891,6 @@
         "y": 59
       },
       "id": 159,
-      "interval": null,
-      "maxDataPoints": null,
       "options": {
         "legend": {
           "calcs": [],
@@ -1901,15 +1898,16 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name, interface) (increase(dubbo_request_concurrent_total{application='kfinancing'}[2m])/120)",
+          "expr": "sum by (pod, interface) (increase(dubbo_request_concurrent_total{application='kfinancing'}[2m])/120)",
           "interval": "",
-          "legendFormat": "{{pod_name}}_{{interface}}",
+          "legendFormat": "{{pod}}_{{interface}}",
           "refId": "A"
         }
       ],
@@ -1926,7 +1924,10 @@
     },
     {
       "collapsed": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1978,7 +1979,10 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2052,18 +2056,19 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name, uri) (rate(http_server_requests_seconds_count{application='kfinancing'}[2m]))",
+          "expr": "sum by (pod, uri) (rate(http_server_requests_seconds_count{application='kfinancing'}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "HTTP_{{pod_name}}_{{uri}}",
+          "legendFormat": "HTTP_{{pod}}_{{uri}}",
           "refId": "A"
         }
       ],
@@ -2075,8 +2080,6 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Http Request Rate",
       "type": "timeseries"
     },
@@ -2120,7 +2123,10 @@
         "noDataState": "keep_state",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2198,29 +2204,30 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name, uri) (rate(http_server_requests_seconds_sum{application=\"kfinancing\", status!~\"5..\"}[2m]))/sum by (pod_name, uri) (rate(http_server_requests_seconds_count{application=\"kfinancing\", status!~\"5..\"}[2m]))",
+          "expr": "sum by (pod, uri) (rate(http_server_requests_seconds_sum{application=\"kfinancing\", status!~\"5..\"}[2m]))/sum by (pod, uri) (rate(http_server_requests_seconds_count{application=\"kfinancing\", status!~\"5..\"}[2m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "HTTP - AVG-  {{ pod_name}}-{{uri}}",
+          "legendFormat": "HTTP - AVG-  {{ pod}}-{{uri}}",
           "refId": "avg_request_count"
         },
         {
           "exemplar": true,
-          "expr": "max by (pod_name, uri) (http_server_requests_seconds_max{application=\"kfinancing\", status!~\"5..\"})",
+          "expr": "max by (pod, uri) (http_server_requests_seconds_max{application=\"kfinancing\", status!~\"5..\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "HTTP - MAX  {{ pod_name}}-{{uri}}",
+          "legendFormat": "HTTP - MAX  {{ pod}}-{{uri}}",
           "refId": "max_request_count"
         }
       ],
@@ -2232,8 +2239,6 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Duration",
       "type": "timeseries"
     },
@@ -2276,7 +2281,10 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2389,18 +2397,19 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name, uri) (rate(http_server_requests_seconds_count{application=\"kfinancing\", status=~\"5..\"}[2m]))",
+          "expr": "sum by (pod, uri) (rate(http_server_requests_seconds_count{application=\"kfinancing\", status=~\"5..\"}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "HTTP - 5xx- {{pod_name}}_{{uri}}",
+          "legendFormat": "HTTP - 5xx- {{pod}}_{{uri}}",
           "refId": "5xx_count"
         }
       ],
@@ -2412,14 +2421,15 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Http-Errors-5xx",
       "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2428,7 +2438,6 @@
       },
       "id": 131,
       "panels": [],
-      "repeat": null,
       "title": "Garbage Collection",
       "type": "row"
     },
@@ -2471,7 +2480,10 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2539,27 +2551,28 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod_name, action, cause) (rate(jvm_gc_pause_seconds_count{application=\"kfinancing\"}[2m]))",
+          "expr": "avg by (pod, action, cause) (rate(jvm_gc_pause_seconds_count{application=\"kfinancing\"}[2m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{action}} ({{cause}})_{{pod_name}}",
+          "legendFormat": "{{action}} ({{cause}})_{{pod}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "avg by (pod_name, cause) (rate(jvm_gc_pause_seconds_count{application=\"kfinancing\", action=\"end of major GC\"}[2m]))",
+          "expr": "avg by (pod, cause) (rate(jvm_gc_pause_seconds_count{application=\"kfinancing\", action=\"end of major GC\"}[2m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "MajorGC_{{pod_name}}",
+          "legendFormat": "MajorGC_{{pod}}",
           "refId": "MayjorGC"
         }
       ],
@@ -2571,8 +2584,6 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Collections",
       "type": "timeseries"
     },
@@ -2615,7 +2626,10 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2683,31 +2697,32 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod_name, action, cause) (rate(jvm_gc_pause_seconds_sum{application=\"kfinancing\"}[2m])/rate(jvm_gc_pause_seconds_count{application=\"kfinancing\"}[2m]))",
+          "expr": "avg by (pod, action, cause) (rate(jvm_gc_pause_seconds_sum{application=\"kfinancing\"}[2m])/rate(jvm_gc_pause_seconds_count{application=\"kfinancing\"}[2m]))",
           "format": "time_series",
           "hide": false,
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "avg {{action}} ({{cause}})_{{pod_name}}",
+          "legendFormat": "avg {{action}} ({{cause}})_{{pod}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "avg by (pod_name, action, cause) (jvm_gc_pause_seconds_max{application=\"kfinancing\"})",
+          "expr": "avg by (pod, action, cause) (jvm_gc_pause_seconds_max{application=\"kfinancing\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "max {{action}} ({{cause}})_{{pod_name}}",
+          "legendFormat": "max {{action}} ({{cause}})_{{pod}}",
           "refId": "B"
         }
       ],
@@ -2719,13 +2734,14 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Pause Durations",
       "type": "timeseries"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2793,38 +2809,40 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (rate(jvm_gc_memory_allocated_bytes_total{application=\"kfinancing\"}[2m]))",
+          "expr": "avg by (pod) (rate(jvm_gc_memory_allocated_bytes_total{application=\"kfinancing\"}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Young allocated_{{pod_name}}",
+          "legendFormat": "Young allocated_{{pod}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (rate(jvm_gc_memory_promoted_bytes_total{application=\"kfinancing\"}[2m]))",
+          "expr": "avg by (pod) (rate(jvm_gc_memory_promoted_bytes_total{application=\"kfinancing\"}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Old promoted_{{pod_name}}",
+          "legendFormat": "Old promoted_{{pod}}",
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Allocated/Promoted",
       "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2921,7 +2939,10 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2994,41 +3015,42 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (system_cpu_usage{application=\"kfinancing\"})",
+          "expr": "avg by (pod) (system_cpu_usage{application=\"kfinancing\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "system_{{pod_name}}",
+          "legendFormat": "system_{{pod}}",
           "metric": "",
           "refId": "system_cpu_usage",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (process_cpu_usage{application=\"kfinancing\"})",
+          "expr": "avg by (pod) (process_cpu_usage{application=\"kfinancing\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "process_{{pod_name}}",
+          "legendFormat": "process_{{pod}}",
           "refId": "process_cpu_usage"
         },
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (avg_over_time(process_cpu_usage{application=\"kfinancing\"}[1h]))",
+          "expr": "avg by (pod) (avg_over_time(process_cpu_usage{application=\"kfinancing\"}[1h]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "process-1h_{{pod_name}}",
+          "legendFormat": "process-1h_{{pod}}",
           "refId": "process_cpu_usage_1h"
         }
       ],
@@ -3040,8 +3062,6 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "CPU",
       "type": "timeseries"
     },
@@ -3081,7 +3101,10 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3153,34 +3176,33 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (system_load_average_1m{application='kfinancing'})",
+          "expr": "avg by (pod) (system_load_average_1m{application='kfinancing'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "system-1m-{{pod_name}}",
+          "legendFormat": "system-1m-{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (system_cpu_count{application='kfinancing'})",
+          "expr": "avg by (pod) (system_cpu_count{application='kfinancing'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "cpu--{{pod_name}}",
+          "legendFormat": "cpu--{{pod}}",
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Load",
       "type": "timeseries"
     },
@@ -3223,7 +3245,10 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3371,7 +3396,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
@@ -3382,7 +3408,7 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{pod_name}}_{{level}}",
+          "legendFormat": "{{pod}}_{{level}}",
           "metric": "",
           "refId": "A",
           "step": 1200
@@ -3396,8 +3422,6 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Log Events (2m)-Error",
       "type": "timeseries"
     },
@@ -3440,7 +3464,10 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3605,26 +3632,27 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name, state) (jvm_threads_states_threads{application='kfinancing'})",
+          "expr": "sum by (pod, state) (jvm_threads_states_threads{application='kfinancing'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{pod_name}}_{{state}}",
+          "legendFormat": "{{pod}}_{{state}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_threads_states_threads{application='kfinancing', state=\"blocked\"})",
+          "expr": "sum by (pod) (jvm_threads_states_threads{application='kfinancing', state=\"blocked\"})",
           "hide": false,
           "interval": "",
-          "legendFormat": "block_thread_{{pod_name}}",
+          "legendFormat": "block_thread_{{pod}}",
           "refId": "blockThread"
         }
       ],
@@ -3636,8 +3664,6 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Thread States",
       "type": "timeseries"
     },
@@ -3748,7 +3774,10 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3824,50 +3853,51 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_threads_live_threads{application=\"kfinancing\"})",
+          "expr": "sum by (pod) (jvm_threads_live_threads{application=\"kfinancing\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "live_{{pod_name}}",
+          "legendFormat": "live_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": " sum by (pod_name) (jvm_threads_daemon_threads{application=\"kfinancing\"})",
+          "expr": " sum by (pod) (jvm_threads_daemon_threads{application=\"kfinancing\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "daemon_{{pod_name}}",
+          "legendFormat": "daemon_{{pod}}",
           "metric": "",
           "refId": "B",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": " sum by (pod_name) (jvm_threads_peak_threads{application=\"kfinancing\"})",
+          "expr": " sum by (pod) (jvm_threads_peak_threads{application=\"kfinancing\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "peak_{{pod_name}}",
+          "legendFormat": "peak_{{pod}}",
           "refId": "C",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "sum by (pod_name) (jvm_threads_states_threads{application=\"kfinancing\"})",
+          "expr": "sum by (pod) (jvm_threads_states_threads{application=\"kfinancing\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "process_{{pod_name}}",
+          "legendFormat": "process_{{pod}}",
           "refId": "D",
           "step": 2400
         }
@@ -3880,8 +3910,6 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Threads",
       "type": "timeseries"
     },
@@ -3947,7 +3975,6 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -4013,7 +4040,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -4046,7 +4074,10 @@
     },
     {
       "collapsed": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -4055,12 +4086,14 @@
       },
       "id": 132,
       "panels": [],
-      "repeat": null,
       "title": "Classloading",
       "type": "row"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -4128,25 +4161,24 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": " sum by (pod_name) (jvm_classes_loaded_classes{application=\"kfinancing\"})",
+          "expr": " sum by (pod) (jvm_classes_loaded_classes{application=\"kfinancing\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "loaded_{{pod_name}}",
+          "legendFormat": "loaded_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 1200
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Classes loaded",
       "type": "timeseries"
     },
@@ -4155,18 +4187,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "editable": true,
       "error": false,
       "fill": 1,
       "fillGradient": 0,
       "grid": {
         "leftLogBase": 1,
-        "leftMax": null,
-        "leftMin": null,
-        "rightLogBase": 1,
-        "rightMax": null,
-        "rightMin": null
+        "rightLogBase": 1
       },
       "gridPos": {
         "h": 7,
@@ -4193,7 +4224,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.1",
+      "pluginVersion": "8.4.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -4204,21 +4235,19 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": " sum by (pod_name) (delta(jvm_classes_loaded_classes{application=\"kfinancing\"}[5m]))",
+          "expr": " sum by (pod) (delta(jvm_classes_loaded_classes{application=\"kfinancing\"}[5m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "delta_{{pod_name}}",
+          "legendFormat": "delta_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 1200
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Class delta (5m)",
       "tooltip": {
         "msResolution": false,
@@ -4229,9 +4258,7 @@
       "type": "graph",
       "x-axis": true,
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4242,31 +4269,27 @@
       ],
       "yaxes": [
         {
-          "decimals": null,
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -4275,12 +4298,14 @@
       },
       "id": 133,
       "panels": [],
-      "repeat": null,
       "title": "Buffer Pools",
       "type": "row"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -4348,18 +4373,19 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (jvm_buffer_memory_used_bytes{application=\"kfinancing\", id=\"direct\"})",
+          "expr": "avg by (pod) (jvm_buffer_memory_used_bytes{application=\"kfinancing\", id=\"direct\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "used_{{pod_name}}",
+          "legendFormat": "used_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 2400
@@ -4370,19 +4396,20 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "capacity_{{pod_name}}",
+          "legendFormat": "capacity_{{pod}}",
           "metric": "",
           "refId": "B",
           "step": 2400
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Direct Buffers",
       "type": "timeseries"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -4451,7 +4478,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
@@ -4468,13 +4496,14 @@
           "step": 2400
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Direct Buffers",
       "type": "timeseries"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -4542,41 +4571,43 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (jvm_buffer_memory_used_bytes{application=\"kfinancing\", id=\"mapped\"})",
+          "expr": "avg by (pod) (jvm_buffer_memory_used_bytes{application=\"kfinancing\", id=\"mapped\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "used_{{pod_name}}",
+          "legendFormat": "used_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 2400
         },
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (jvm_buffer_total_capacity_bytes{application=\"kfinancing\", id=\"mapped\"})",
+          "expr": "avg by (pod) (jvm_buffer_total_capacity_bytes{application=\"kfinancing\", id=\"mapped\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "capacity_{{pod_name}}",
+          "legendFormat": "capacity_{{pod}}",
           "metric": "",
           "refId": "B",
           "step": 2400
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Mapped Buffers",
       "type": "timeseries"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -4645,56 +4676,55 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod_name) (jvm_buffer_count_buffers{application=\"kfinancing\", id=\"mapped\"})",
+          "expr": "avg by (pod) (jvm_buffer_count_buffers{application=\"kfinancing\", id=\"mapped\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "count_{{pod_name}}",
+          "legendFormat": "count_{{pod}}",
           "metric": "",
           "refId": "A",
           "step": 2400
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Mapped Buffers count",
       "type": "timeseries"
     }
   ],
   "refresh": "",
-  "schemaVersion": 31,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "allFormat": "glob",
-        "allValue": null,
         "current": {
           "selected": false,
-          "text": "blue-kfinancing-76b84f9896-hljrd",
-          "value": "blue-kfinancing-76b84f9896-hljrd"
+          "text": "blue-kfinancing-6495577d4b-qf8gw",
+          "value": "blue-kfinancing-6495577d4b-qf8gw"
         },
-        "datasource": "prometheus",
-        "definition": "label_values(container_memory_usage_bytes{container=\"kfinancing\", }, pod_name)",
-        "description": null,
-        "error": null,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "definition": "label_values(container_memory_usage_bytes{container=\"kfinancing\", }, pod)",
         "hide": 0,
         "includeAll": false,
-        "label": "pod_name",
+        "label": "pod",
         "multi": false,
         "multiFormat": "glob",
-        "name": "pod_name",
+        "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(container_memory_usage_bytes{container=\"kfinancing\", }, pod_name)",
+          "query": "label_values(container_memory_usage_bytes{container=\"kfinancing\", }, pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
@@ -4708,16 +4738,16 @@
       },
       {
         "allFormat": "glob",
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "prometheus",
-        "definition": "label_values(jvm_memory_used_bytes{pod_name=\"$pod_name\", area=\"heap\"},id)",
-        "description": null,
-        "error": null,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "definition": "label_values(jvm_memory_used_bytes{pod=\"$pod\", area=\"heap\"},id)",
         "hide": 0,
         "includeAll": true,
         "label": "JVM Memory Pools Heap",
@@ -4726,7 +4756,7 @@
         "name": "jvm_memory_pool_heap",
         "options": [],
         "query": {
-          "query": "label_values(jvm_memory_used_bytes{pod_name=\"$pod_name\", area=\"heap\"},id)",
+          "query": "label_values(jvm_memory_used_bytes{pod=\"$pod\", area=\"heap\"},id)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -4740,16 +4770,16 @@
       },
       {
         "allFormat": "glob",
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "prometheus",
-        "definition": "label_values(jvm_memory_used_bytes{pod_name=\"$pod_name\", area=\"nonheap\"},id)",
-        "description": null,
-        "error": null,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "definition": "label_values(jvm_memory_used_bytes{pod=\"$pod\", area=\"nonheap\"},id)",
         "hide": 0,
         "includeAll": true,
         "label": "JVM Memory Pools Non-Heap",
@@ -4758,7 +4788,7 @@
         "name": "jvm_memory_pool_nonheap",
         "options": [],
         "query": {
-          "query": "label_values(jvm_memory_used_bytes{pod_name=\"$pod_name\", area=\"nonheap\"},id)",
+          "query": "label_values(jvm_memory_used_bytes{pod=\"$pod\", area=\"nonheap\"},id)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -4805,5 +4835,6 @@
   "timezone": "browser",
   "title": "kfinancing",
   "uid": "kfinancingyu78",
-  "version": 8
+  "version": 1,
+  "weekStart": ""
 }
