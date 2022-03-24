@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 103,
-  "iteration": 1648102492013,
+  "id": 108,
+  "iteration": 1648109670952,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -76,7 +76,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -100,9 +101,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "io_datastorage_StorageSize/1000/1000",
+          "expr": "io_datastorage_StorageSize",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "StorageSize_{{job}}",
           "refId": "A"
         }
       ],
@@ -157,7 +158,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -181,9 +183,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "io_datastorage_WalTotalSize{job='$instance'}/1000/1000",
+          "expr": "io_datastorage_WalTotalSize",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "WalTotalSize_{{job}}",
           "refId": "A"
         }
       ],
@@ -348,14 +350,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "io_datastorage_CheckpointFsyncHistogram_0_100{job='$instance'}",
+          "expr": "io_datastorage_CheckpointFsyncHistogram_0_100",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "io_datastorage_CheckpointWalRecordFsyncHistogram_1000_5000{job='$instance'}",
+          "expr": "io_datastorage_CheckpointWalRecordFsyncHistogram_1000_5000",
           "hide": false,
           "interval": "",
           "legendFormat": "",
@@ -363,7 +365,7 @@
         },
         {
           "exemplar": true,
-          "expr": "io_datastorage_CheckpointFsyncHistogram_500_1000{job='$instance'}",
+          "expr": "io_datastorage_CheckpointFsyncHistogram_500_1000",
           "hide": false,
           "interval": "",
           "legendFormat": "",
@@ -384,8 +386,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "ignite",
-          "value": "ignite"
+          "text": "ignite-1",
+          "value": "ignite-1"
         },
         "datasource": null,
         "definition": "sys_UpTime",
@@ -415,7 +417,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Storage",
-  "uid": "Z7lNxENnk",
-  "version": 1
+  "title": "Ignite-Storage",
+  "uid": "Ignite-Storage",
+  "version": 6
 }

@@ -20,8 +20,9 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
+  "gnetId": null,
   "graphTooltip": 0,
-  "id": 30,
+  "id": 109,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -87,6 +88,7 @@
         "noDataState": "no_data",
         "notifications": []
       },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -151,8 +153,7 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "targets": [
@@ -160,7 +161,7 @@
           "exemplar": true,
           "expr": "krisk_compute_jobs_Active",
           "interval": "",
-          "legendFormat": "jobs_Active_{{pod}}",
+          "legendFormat": "jobs_Active_{{pod_name}}",
           "refId": "A"
         },
         {
@@ -168,7 +169,7 @@
           "expr": "krisk_compute_jobs_Waiting",
           "hide": false,
           "interval": "",
-          "legendFormat": "jobs_Waiting_{{pod}}",
+          "legendFormat": "jobs_Waiting_{{pod_name}}",
           "refId": "B"
         }
       ],
@@ -193,7 +194,7 @@
           {
             "evaluator": {
               "params": [
-                5
+                0
               ],
               "type": "lt"
             },
@@ -222,6 +223,7 @@
         "noDataState": "no_data",
         "notifications": []
       },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -287,16 +289,15 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(krisk_compute_jobs_ExecutionTime[2m])",
+          "expr": "rate(krisk_compute_jobs_ExecutionTime[1m])",
           "interval": "",
-          "legendFormat": "jobs_ExecutionTime_{{pod}}",
+          "legendFormat": "jobs_ExecutionTime_{{pod_name}}",
           "refId": "A"
         }
       ],
@@ -304,7 +305,7 @@
         {
           "colorMode": "critical",
           "op": "lt",
-          "value": 5,
+          "value": 0,
           "visible": true
         }
       ],
@@ -373,6 +374,7 @@
         "noDataState": "no_data",
         "notifications": []
       },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -437,8 +439,7 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "targets": [
@@ -446,7 +447,7 @@
           "exemplar": true,
           "expr": "dtm_compute_jobs_Active",
           "interval": "",
-          "legendFormat": "jobs_Active_{{pod}}",
+          "legendFormat": "jobs_Active_{{pod_name}}",
           "refId": "A"
         },
         {
@@ -454,7 +455,7 @@
           "expr": "dtm_compute_jobs_Waiting",
           "hide": false,
           "interval": "",
-          "legendFormat": "jobs_Waiting_{{pod}}",
+          "legendFormat": "jobs_Waiting_{{pod_name}}",
           "refId": "B"
         }
       ],
@@ -508,6 +509,7 @@
         "noDataState": "no_data",
         "notifications": []
       },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -573,8 +575,7 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "targets": [
@@ -582,7 +583,7 @@
           "exemplar": true,
           "expr": "rate(dtm_compute_jobs_ExecutionTime[5m])",
           "interval": "",
-          "legendFormat": "jobs_ExecutionTime_{{pod}}",
+          "legendFormat": "jobs_ExecutionTime_{{pod_name}}",
           "refId": "A"
         }
       ],
@@ -599,7 +600,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 35,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -613,6 +614,5 @@
   "timezone": "",
   "title": "IgniteComputeJobs",
   "uid": "KriskJobs",
-  "version": 5,
-  "weekStart": ""
+  "version": 20
 }

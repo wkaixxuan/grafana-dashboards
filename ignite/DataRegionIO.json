@@ -20,9 +20,10 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
+  "gnetId": null,
   "graphTooltip": 0,
-  "id": 26,
-  "iteration": 1648108770432,
+  "id": 106,
+  "iteration": 1648109672369,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -88,6 +89,7 @@
         "noDataState": "no_data",
         "notifications": []
       },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -153,8 +155,7 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "targets": [
@@ -162,7 +163,7 @@
           "exemplar": true,
           "expr": "io_dataregion_cacheDataRegion_OffheapUsedSize/io_dataregion_cacheDataRegion_OffHeapSize",
           "interval": "",
-          "legendFormat": "cacheDataRegion_OffheapUsage_{{instance}}",
+          "legendFormat": "cacheDataRegion_OffheapUsage_{{job}}",
           "refId": "non heap usage"
         },
         {
@@ -170,7 +171,7 @@
           "expr": "io_dataregion_cacheDataRegion_TotalAllocatedSize/io_dataregion_cacheDataRegion_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "cacheDataRegion_Usage_{{instance}}",
+          "legendFormat": "cacheDataRegion_Usage",
           "refId": "usage"
         }
       ],
@@ -316,6 +317,7 @@
         "noDataState": "no_data",
         "notifications": []
       },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -385,8 +387,7 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "targets": [
@@ -394,7 +395,7 @@
           "exemplar": true,
           "expr": "io_dataregion_cacheDataRegion_TotalAllocatedSize/io_dataregion_cacheDataRegion_MaxSize",
           "interval": "",
-          "legendFormat": "cacheDataRegionUsage_{{instance}}",
+          "legendFormat": "cacheDataRegionUsage_{{job}}",
           "refId": "cacheDataRegion"
         },
         {
@@ -402,7 +403,7 @@
           "expr": "io_dataregion_sysMemPlc_TotalAllocatedSize/io_dataregion_sysMemPlc_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "sysMemPlcUsage_{{instance}}",
+          "legendFormat": "sysMemPlcUsage_{{job}}",
           "refId": "sysMemPlc"
         },
         {
@@ -410,7 +411,7 @@
           "expr": "io_dataregion_volatileDsMemPlc_TotalAllocatedSize/io_dataregion_volatileDsMemPlc_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "volatileDsMemPlc_{{instance}}",
+          "legendFormat": "volatileDsMemPlc_{{job}}",
           "refId": "volatileDsMemPlc"
         },
         {
@@ -418,7 +419,7 @@
           "expr": "io_dataregion_default_TotalAllocatedSize/io_dataregion_default_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "default_{{instance}}",
+          "legendFormat": "default_{{job}}",
           "refId": "A"
         },
         {
@@ -426,7 +427,7 @@
           "expr": "io_dataregion_TxLog_TotalAllocatedSize/io_dataregion_TxLog_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "TxLog_{{instance}}",
+          "legendFormat": "TxLog_{{job}}",
           "refId": "default"
         },
         {
@@ -434,7 +435,7 @@
           "expr": "io_dataregion_metastoreMemPlc_TotalAllocatedSize/io_dataregion_metastoreMemPlc_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "Metastore_{{instance}}",
+          "legendFormat": "Metastore_{{job}}",
           "refId": "metastore"
         }
       ],
@@ -450,6 +451,7 @@
       "type": "timeseries"
     },
     {
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -515,8 +517,7 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "targets": [
@@ -524,7 +525,7 @@
           "exemplar": true,
           "expr": "io_dataregion_cacheDataRegion_OffHeapSize/1000/1000",
           "interval": "",
-          "legendFormat": "OffHeapSize_{{instance}}",
+          "legendFormat": "OffHeapSize_{{job}}",
           "refId": "offHeapSize"
         },
         {
@@ -532,7 +533,7 @@
           "expr": "io_dataregion_cacheDataRegion_OffheapUsedSize/1000/1000",
           "hide": false,
           "interval": "",
-          "legendFormat": "OffheapUsedSize_{{instance}}",
+          "legendFormat": "OffheapUsedSize_{{job}}",
           "refId": "offHeapUnusedSize"
         }
       ],
@@ -540,6 +541,7 @@
       "type": "timeseries"
     },
     {
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -605,8 +607,7 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
+          "mode": "single"
         }
       },
       "targets": [
@@ -614,7 +615,7 @@
           "exemplar": true,
           "expr": "io_dataregion_default_MaxSize",
           "interval": "",
-          "legendFormat": "default_{{instance}}",
+          "legendFormat": "default_{{job}}",
           "refId": "A"
         },
         {
@@ -622,7 +623,7 @@
           "expr": "io_dataregion_TxLog_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "txLog_{{instance}}",
+          "legendFormat": "txLog_{{job}}",
           "refId": "B"
         },
         {
@@ -630,7 +631,7 @@
           "expr": "io_dataregion_metastoreMemPlc_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "metastore_{{instance}}",
+          "legendFormat": "metastore_{{job}}",
           "refId": "C"
         },
         {
@@ -638,7 +639,7 @@
           "expr": "io_dataregion_sysMemPlc_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "sysMemPlc_{{instance}}",
+          "legendFormat": "sysMemPlc_{{job}}",
           "refId": "D"
         },
         {
@@ -646,7 +647,7 @@
           "expr": "io_dataregion_volatileDsMemPlc_MaxSize",
           "hide": false,
           "interval": "",
-          "legendFormat": "volatileDs_{{instance}}",
+          "legendFormat": "volatileDs_{{job}}",
           "refId": "E"
         }
       ],
@@ -654,20 +655,25 @@
       "type": "timeseries"
     }
   ],
-  "schemaVersion": 35,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
+        "allValue": null,
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": "ignite-3",
+          "value": "ignite-3"
         },
+        "datasource": null,
         "definition": "sys_UpTime",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": false,
+        "label": null,
         "multi": false,
         "name": "instance",
         "options": [],
@@ -676,7 +682,7 @@
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*instance=\"([^\"]*).*/",
+        "regex": "/.*job=\"([^\"]*).*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -691,6 +697,5 @@
   "timezone": "",
   "title": "Ignite-DataRegionIO",
   "uid": "Ignite-DataRegionIO",
-  "version": 4,
-  "weekStart": ""
+  "version": 21
 }
