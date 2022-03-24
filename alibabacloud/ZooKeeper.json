@@ -8989,7 +8989,7 @@
         "includeAll": false,
         "label": "Datasource",
         "multi": false,
-        "name": prometheus",
+        "name": "prometheus",
         "options": [],
         "query": "prometheus",
         "refresh": 1,
