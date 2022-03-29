@@ -335,7 +335,7 @@
       "pluginVersion": "8.2.1",
       "targets": [
         {
-          "expr": "sum(apiserver_current_inflight_requests{requestKind=\"readOnly\"})",
+          "expr": "sum(apiserver_current_inflight_requests{request_kind=\"readOnly\"})",
           "format": "time_series",
           "interval": "30s",
           "intervalFactor": 1,
@@ -415,7 +415,7 @@
       "pluginVersion": "8.2.1",
       "targets": [
         {
-          "expr": " sum(apiserver_current_inflight_requests{requestKind=\"mutating\"})",
+          "expr": " sum(apiserver_current_inflight_requests{request_kind=\"mutating\"})",
           "format": "time_series",
           "interval": "30s",
           "intervalFactor": 1,
@@ -909,7 +909,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "apiserver_current_inflight_requests{requestKind=\"readOnly\"}",
+          "expr": "apiserver_current_inflight_requests{request_kind=\"readOnly\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1016,7 +1016,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "apiserver_current_inflight_requests{requestKind=\"mutating\"}",
+          "expr": "apiserver_current_inflight_requests{request_kind=\"mutating\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,

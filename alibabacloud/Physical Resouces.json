@@ -21,15 +21,10 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 694,
   "links": [],
   "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -85,7 +80,13 @@
       "pluginVersion": "8.4.2",
       "targets": [
         {
-          "expr": "sum(kube_pod_container_resource_requests_cpu_cores{node!~\"master-.*\"})/sum(kube_node_status_capacity_cpu_cores{node!~\"master-.*\"})*100",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\",node!~\"virtual-kubelet.*\"})/sum(kube_node_status_capacity{resource=\"cpu\",node!~\"virtual-kubelet.*\"})*100",
+          "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
@@ -98,10 +99,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -148,16 +145,30 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
           "expr": "count(kube_pod_info{}) by (created_by_kind,namespace)",
+          "interval": "",
           "legendFormat": "{{created_by_kind}}@{{namespace}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "expr": "count(kube_pod_info{})",
           "legendFormat": "amount of pod",
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "expr": "count(kube_pod_info{}) by (namespace)",
           "legendFormat": "{{namespace}}",
           "refId": "C"
@@ -179,11 +190,13 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:91",
           "format": "short",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:92",
           "format": "short",
           "logBase": 1,
           "show": true
@@ -194,10 +207,6 @@
       }
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -252,9 +261,15 @@
       "pluginVersion": "8.4.2",
       "targets": [
         {
-          "expr": "sum(kube_pod_container_resource_requests_memory_bytes{node!~\"master-.*\"})/sum(kube_node_status_allocatable_memory_bytes{node!~\"master-.*\"})*100",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\",node!~\"virtual-kubelet.*\"})/sum(kube_node_status_capacity{resource=\"memory\",node!~\"virtual-kubelet.*\"})*100",
           "format": "table",
           "interval": "15s",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -262,10 +277,6 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -326,8 +337,15 @@
       "pluginVersion": "8.4.2",
       "targets": [
         {
-          "expr": "sum(kube_pod_container_resource_requests_cpu_cores{node!~\"master-.*\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\",node!~\"virtual-kubelet.*\"})",
           "hide": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -335,10 +353,6 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -399,8 +413,15 @@
       "pluginVersion": "8.4.2",
       "targets": [
         {
-          "expr": "sum(kube_node_status_capacity_cpu_cores{node!~\"master-.*\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(kube_node_status_capacity{resource=\"cpu\",node!~\"virtual-kubelet.*\"})",
           "hide": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -408,10 +429,6 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -473,10 +490,17 @@
       "pluginVersion": "8.4.2",
       "targets": [
         {
-          "expr": "sum(kube_pod_container_resource_requests_memory_bytes{node!~\"master-.*\"})/1024/1024/1024",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\",node!~\"virtual-kubelet.*\"})/1024/1024/1024",
           "format": "table",
           "hide": false,
           "instant": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -484,10 +508,6 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -549,10 +569,17 @@
       "pluginVersion": "8.4.2",
       "targets": [
         {
-          "expr": "sum(kube_node_status_allocatable_memory_bytes{node!~\"master-.*\"})/1024/1024/1024",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(kube_node_status_capacity{resource=\"memory\",node!~\"virtual-kubelet.*\"})/1024/1024/1024",
           "format": "table",
           "hide": false,
           "instant": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -600,10 +627,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -648,22 +671,30 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(kube_pod_container_resource_requests_cpu_cores{node!~\"master-.*\"}) by (node)/sum(kube_node_status_capacity_cpu_cores{node!~\"master-.*\"}) by (node)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\",node!~\"virtual-kubelet.*\"}) by (node)/sum(kube_node_status_capacity{resource=\"cpu\",node!~\"virtual-kubelet.*\"}) by (node)",
           "format": "time_series",
           "hide": false,
           "instant": false,
+          "interval": "",
           "legendFormat": "{{node}}",
           "refId": "A"
         }
       ],
       "thresholds": [
         {
+          "$$hashKey": "object:208",
           "colorMode": "critical",
           "fill": true,
           "line": true,
           "op": "gt",
           "value": 0.75,
-          "visible": true
+          "visible": true,
+          "yaxis": "left"
         }
       ],
       "timeRegions": [],
@@ -681,11 +712,13 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:178",
           "format": "percentunit",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:179",
           "decimals": 1,
           "format": "short",
           "logBase": 1,
@@ -737,10 +770,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -785,19 +814,27 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(kube_pod_container_resource_requests_memory_bytes{node!~\"master-.*\"}) by (node) / sum(kube_node_status_allocatable_memory_bytes{node!~\"master-.*\"}) by (node)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\",node!~\"virtual-kubelet.*\"}) by (node)/sum(kube_node_status_capacity{resource=\"memory\",node!~\"virtual-kubelet.*\"}) by (node)",
+          "interval": "",
           "legendFormat": "{{node}}",
           "refId": "A"
         }
       ],
       "thresholds": [
         {
+          "$$hashKey": "object:301",
           "colorMode": "critical",
           "fill": true,
           "line": true,
           "op": "gt",
           "value": 0.85,
-          "visible": true
+          "visible": true,
+          "yaxis": "left"
         }
       ],
       "timeRegions": [],
@@ -815,12 +852,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:271",
           "format": "percentunit",
           "label": "",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:272",
           "decimals": 1,
           "format": "short",
           "logBase": 1,
@@ -872,10 +911,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -923,19 +958,27 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "1-(sum(node_filesystem_free_bytes{}) by(instance,device) / sum(node_filesystem_size_bytes{}) by(instance,device))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "1-(sum(node_filesystem_free_bytes{device=\"/dev/vda1\"}) by(instance,device) / sum(node_filesystem_size_bytes{device=\"/dev/vda1\"}) by(instance,device))",
+          "interval": "",
           "legendFormat": "{{device}}@{{instance}}",
           "refId": "A"
         }
       ],
       "thresholds": [
         {
+          "$$hashKey": "object:394",
           "colorMode": "critical",
           "fill": true,
           "line": true,
           "op": "gt",
           "value": 0.8,
-          "visible": true
+          "visible": true,
+          "yaxis": "left"
         }
       ],
       "timeRegions": [],
@@ -953,12 +996,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:364",
           "decimals": 1,
           "format": "percentunit",
           "logBase": 1,
           "show": true
         },
         {
+          "$$hashKey": "object:365",
           "format": "short",
           "logBase": 1,
           "show": true
@@ -1000,6 +1045,6 @@
   "timezone": "",
   "title": "Physical Resouces",
   "uid": "prometheus-54061-40",
-  "version": 1,
+  "version": 5,
   "weekStart": ""
 }
