@@ -3044,8 +3044,8 @@
       "30d"
     ]
   },
-  "timezone": "",
+  "timezone": "browser",
   "title": "Ingress-v2",
-  "uid": "prometheus-54061-41-2",
+  "uid": "ingress-v2",
   "version": 2
 }

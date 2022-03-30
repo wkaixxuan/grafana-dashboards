@@ -1209,6 +1209,6 @@
   },
   "timezone": "browser",
   "title": "Daemonset",
-  "uid": "prometheus-54061-414-2",
+  "uid": "daemonset",
   "version": 2
 }

@@ -1225,6 +1225,6 @@
   },
   "timezone": "browser",
   "title": "StatefulSet",
-  "uid": "prometheus-54061-415-2",
+  "uid": "statefulset",
   "version": 2
 }

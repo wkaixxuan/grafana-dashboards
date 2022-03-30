@@ -9129,8 +9129,8 @@
       "30d"
     ]
   },
-  "timezone": "",
-  "title": "ZooKeeper by Prometheus",
-  "uid": "SDE76m7Zzz",
+  "timezone": "browser",
+  "title": "ZooKeeper",
+  "uid": "zookeeper",
   "version": 1
 }

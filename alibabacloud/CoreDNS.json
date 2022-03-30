@@ -1678,8 +1678,8 @@
       "30d"
     ]
   },
-  "timezone": "",
+  "timezone": "browser",
   "title": "CoreDNS",
-  "uid": "prometheus-54061-416",
+  "uid": "coredns",
   "version": 2
 }

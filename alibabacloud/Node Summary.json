@@ -857,8 +857,8 @@
       "30d"
     ]
   },
-  "timezone": "",
+  "timezone": "browser",
   "title": "Node Summary",
-  "uid": "prometheus-54061-413-2",
+  "uid": "node-summary",
   "version": 2
 }

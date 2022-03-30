@@ -1423,8 +1423,8 @@
       "1d"
     ]
   },
-  "timezone": "",
+  "timezone": "browser",
   "title": "Prometheus",
-  "uid": "prometheus-54061-46",
+  "uid": "prometheus",
   "version": 2
 }

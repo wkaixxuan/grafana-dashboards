@@ -1210,6 +1210,6 @@
   },
   "timezone": "browser",
   "title": "Deployment",
-  "uid": "prometheus-54061-20-2",
+  "uid": "deployment",
   "version": 2
 }

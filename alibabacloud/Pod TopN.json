@@ -508,8 +508,8 @@
       "1d"
     ]
   },
-  "timezone": "",
+  "timezone": "browser",
   "title": "Pod TopN",
-  "uid": "prometheus-54061-411-2",
+  "uid": "pod-topn",
   "version": 2
 }

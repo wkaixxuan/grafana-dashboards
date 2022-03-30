@@ -2235,6 +2235,6 @@
   },
   "timezone": "browser",
   "title": "Node Details",
-  "uid": "prometheus-54061-10-2",
+  "uid": "node-details",
   "version": 2
 }

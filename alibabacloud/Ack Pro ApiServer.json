@@ -2288,8 +2288,8 @@
       "30d"
     ]
   },
-  "timezone": "",
+  "timezone": "browser",
   "title": "Ack Pro ApiServer",
-  "uid": "prometheus-24882-422",
+  "uid": "ack-pro-apiserver",
   "version": 2
 }

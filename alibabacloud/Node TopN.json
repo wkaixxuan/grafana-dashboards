@@ -736,8 +736,8 @@
       "1d"
     ]
   },
-  "timezone": "",
+  "timezone": "browser",
   "title": "Node TopN",
-  "uid": "prometheus-54061-412-2",
+  "uid": "node-topn",
   "version": 2
 }

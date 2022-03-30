@@ -1547,8 +1547,8 @@
       "30d"
     ]
   },
-  "timezone": "",
+  "timezone": "browser",
   "title": "Workload",
-  "uid": "prometheus-54061-47-2",
+  "uid": "workload",
   "version": 2
 }
