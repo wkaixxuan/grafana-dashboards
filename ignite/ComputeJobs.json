@@ -295,7 +295,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(krisk_compute_jobs_ExecutionTime[1m])",
+          "expr": "rate(krisk_compute_jobs_ExecutionTime[2m])",
           "interval": "",
           "legendFormat": "jobs_ExecutionTime_{{pod_name}}",
           "refId": "A"
