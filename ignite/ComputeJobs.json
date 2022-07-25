@@ -30,7 +30,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "krisk",
-          "env": "beta"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -188,7 +188,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "krisk",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -316,7 +316,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "dtm",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -474,7 +474,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "dtm",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {

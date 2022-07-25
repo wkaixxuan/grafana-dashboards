@@ -1074,7 +1074,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "trading-engine",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -1203,7 +1203,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "trading-engine",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -1493,7 +1493,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "trading-engine",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -1662,7 +1662,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "trading-engine",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -1798,7 +1798,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "trading-engine",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -1942,7 +1942,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "trading-engine",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -2086,7 +2086,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "trading-engine",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -2754,7 +2754,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "trading-engine",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {

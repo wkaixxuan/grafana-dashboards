@@ -37,7 +37,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "ignite",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -226,7 +226,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "ignite",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -370,7 +370,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "ignite",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -528,7 +528,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "ignite",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
@@ -672,7 +672,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "ignite",
-          "env": "prod"
+          "env": "vibra"
         },
         "conditions": [
           {
