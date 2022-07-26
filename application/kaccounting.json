@@ -1074,7 +1074,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -1203,7 +1203,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -1493,7 +1493,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -1638,7 +1638,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -1774,7 +1774,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -1918,7 +1918,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -2062,7 +2062,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -2221,7 +2221,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -2420,7 +2420,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -2566,7 +2566,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -2833,7 +2833,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -3185,7 +3185,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -3404,7 +3404,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -3892,7 +3892,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kaccounting",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {

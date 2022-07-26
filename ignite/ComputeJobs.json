@@ -30,7 +30,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "krisk",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -188,7 +188,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "krisk",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -316,7 +316,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "dtm",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
@@ -474,7 +474,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "dtm",
-          "env": "vibra"
+          "env": "kikitrade-prod"
         },
         "conditions": [
           {
