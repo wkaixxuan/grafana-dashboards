@@ -2907,7 +2907,7 @@
           }
         ],
         "executionErrorState": "keep_state",
-        "for": "1m",
+        "for": "5m",
         "frequency": "1m",
         "handler": 1,
         "name": "CPU Usage is High",
