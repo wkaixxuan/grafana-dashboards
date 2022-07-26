@@ -1666,7 +1666,7 @@
           }
         ],
         "executionErrorState": "keep_state",
-        "for": "5m",
+        "for": "1m",
         "frequency": "1m",
         "handler": 1,
         "name": "Dubbo Request Latency alert",

@@ -1854,7 +1854,7 @@
           }
         ],
         "executionErrorState": "keep_state",
-        "for": "5m",
+        "for": "1m",
         "frequency": "1m",
         "handler": 1,
         "name": "Dubbo Request Concurrent alert",
@@ -4015,7 +4015,7 @@
               "type": "gt"
             },
             "operator": {
-              "type": "and"
+              "type": "or"
             },
             "query": {
               "params": [
@@ -4032,7 +4032,7 @@
           }
         ],
         "executionErrorState": "keep_state",
-        "for": "5m",
+        "for": "1m",
         "frequency": "1m",
         "handler": 1,
         "name": "Pod Restart or OOM alert",
