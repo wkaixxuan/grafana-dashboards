@@ -31,7 +31,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "ignite",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -159,7 +159,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "ignite",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -290,7 +290,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "ignite",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -493,7 +493,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "ignite",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {

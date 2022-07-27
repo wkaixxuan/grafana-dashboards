@@ -1104,7 +1104,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -1237,7 +1237,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -1541,7 +1541,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -1690,7 +1690,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -1830,7 +1830,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -1978,7 +1978,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -2122,7 +2122,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -2285,7 +2285,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -2484,7 +2484,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -2634,7 +2634,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -2909,7 +2909,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -3273,7 +3273,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -3492,7 +3492,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -3996,7 +3996,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {

@@ -316,7 +316,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb-node",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -456,7 +456,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb-node",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
@@ -601,7 +601,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb-node",
-          "env": "vibra"
+          "env": "vibra-prod"
         },
         "conditions": [
           {
