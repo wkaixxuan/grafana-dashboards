@@ -1070,7 +1070,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1199,7 +1199,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1489,7 +1489,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1634,7 +1634,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1770,7 +1770,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1914,7 +1914,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2058,7 +2058,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2217,7 +2217,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2416,7 +2416,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2562,7 +2562,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2829,7 +2829,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -3181,7 +3181,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -3400,7 +3400,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -3888,7 +3888,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {

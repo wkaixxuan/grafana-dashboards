@@ -316,7 +316,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb-node",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -456,7 +456,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb-node",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -601,7 +601,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kweb-node",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {

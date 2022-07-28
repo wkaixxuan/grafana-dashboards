@@ -1074,7 +1074,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1228,7 +1228,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1518,7 +1518,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1664,7 +1664,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1800,7 +1800,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -1944,7 +1944,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2088,7 +2088,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2247,7 +2247,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2446,7 +2446,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2592,7 +2592,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -2859,7 +2859,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -3211,7 +3211,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -3430,7 +3430,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
@@ -3918,7 +3918,7 @@
       "alert": {
         "alertRuleTags": {
           "application": "kcustomer",
-          "env": "vibra"
+          "env": "kikitrade-beta"
         },
         "conditions": [
           {
