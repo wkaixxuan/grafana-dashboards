@@ -3,10 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": {
-          "type": "datasource",
-          "uid": "grafana"
-        },
+        "datasource": "-- Grafana --",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -22,10 +19,7 @@
         "type": "dashboard"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "prometheus"
-        },
+        "datasource": "Prometheus",
         "enable": true,
         "expr": "resets(process_uptime_seconds{instance=\"$instance\"}[1m]) > 0",
         "iconColor": "rgba(255, 96, 96, 1)",
@@ -43,8 +37,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 13694,
   "graphTooltip": 1,
-  "id": 67,
-  "iteration": 1659001935494,
+  "id": 367,
+  "iteration": 1648109998844,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -66,10 +60,6 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -117,15 +107,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
           "exemplar": true,
-          "expr": "process_cpu_seconds_total{service=\"kweb-node\", pod='$pod'}*1000",
+          "expr": "process_cpu_seconds_total{app_kubernetes_io_instance=\"kweb-node\", pod='$pod'}*1000",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -140,10 +126,6 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -203,15 +185,11 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
           "exemplar": true,
-          "expr": "process_start_time_seconds{service=\"kweb-node\", pod='$pod'}*1000",
+          "expr": "process_start_time_seconds{app_kubernetes_io_instance=\"kweb-node\", pod='$pod'}*1000",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -230,10 +208,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -270,7 +244,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -339,9 +313,44 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
+      "alert": {
+        "alertRuleTags": {
+          "application": "kweb-node",
+          "env": "kikitrade-beta"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                500
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "",
+        "name": "Http Request Rate is High",
+        "noDataState": "no_data",
+        "notifications": []
       },
       "fieldConfig": {
         "defaults": {
@@ -423,12 +432,8 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
           "exemplar": true,
-          "expr": "sum by (pod, path) (rate(social_http_request_duration_milliseconds_count{service=\"kweb-node\"}[2m]))",
+          "expr": "sum by (pod, path) (rate(social_http_request_duration_milliseconds_count{app_kubernetes_io_instance=\"kweb-node\"}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -448,9 +453,44 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
+      "alert": {
+        "alertRuleTags": {
+          "application": "kweb-node",
+          "env": "kikitrade-beta"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                300
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "avg_request_count",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "HTTP Request Duration > 300ms",
+        "name": "HTTP Request Duration > 300ms",
+        "noDataState": "keep_state",
+        "notifications": []
       },
       "fieldConfig": {
         "defaults": {
@@ -536,12 +576,8 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
           "exemplar": true,
-          "expr": "sum by (pod, path) (rate(social_http_request_duration_milliseconds_sum{service=\"kweb-node\", status!~\"5..\"}[2m]))/sum by (pod, path) (rate(social_http_request_duration_milliseconds_count{service=\"kweb-node\", status!~\"5..\"}[2m]))",
+          "expr": "sum by (pod, path) (rate(social_http_request_duration_milliseconds_sum{app_kubernetes_io_instance=\"kweb-node\", status!~\"5..\"}[2m]))/sum by (pod, path) (rate(social_http_request_duration_milliseconds_count{app_kubernetes_io_instance=\"kweb-node\", status!~\"5..\"}[2m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -562,9 +598,43 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
+      "alert": {
+        "alertRuleTags": {
+          "application": "kweb-node",
+          "env": "kikitrade-beta"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                50
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "5xx_count",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Errors alert",
+        "noDataState": "no_data",
+        "notifications": []
       },
       "fieldConfig": {
         "defaults": {
@@ -685,12 +755,8 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
           "exemplar": true,
-          "expr": "sum by (pod, path) (rate(social_http_all_fail_total{service=\"kweb-node\",status=~\"5..\"}[2m]))",
+          "expr": "sum by (pod, path) (rate(social_http_all_fail_total{app_kubernetes_io_instance=\"kweb-node\",status=~\"5..\"}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -730,10 +796,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -764,7 +826,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -832,10 +894,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -872,7 +930,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -966,52 +1024,10 @@
       }
     },
     {
-      "alert": {
-        "alertRuleTags": {
-          "application": "kweb-node",
-          "env": "vibra-prod"
-        },
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "restart",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "sum"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Pod Restart or OOM alert",
-        "noDataState": "no_data",
-        "notifications": []
-      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -1041,7 +1057,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1051,37 +1067,15 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
           "exemplar": true,
-          "expr": "sum by (container) (increase(kube_pod_container_status_restarts_total{container=\"kweb-node\"}[10m]))",
+          "expr": "sum by (container) (increase(kube_pod_container_status_restarts_total{pod='$pod'}[10m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "restart - $pod",
           "refId": "restart"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
-          "expr": "sum by (container) (increase(kube_pod_container_status_last_terminated_reason{container=\"kweb-node\",reason=\"OOMKilled\"}[10m]))",
-          "hide": true,
-          "refId": "oom"
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 1,
-          "visible": true
-        }
-      ],
+      "thresholds": [],
       "timeRegions": [],
       "title": "Pod Restart or OOM",
       "tooltip": {
@@ -1118,10 +1112,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -1151,7 +1141,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1230,10 +1220,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1269,7 +1255,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1327,10 +1313,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1366,7 +1348,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1424,10 +1406,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1463,7 +1441,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1521,10 +1499,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -1554,7 +1528,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1622,7 +1596,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 36,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1631,42 +1605,10 @@
         "allFormat": "glob",
         "current": {
           "selected": false,
-          "text": "vibra-prod",
-          "value": "vibra-prod"
+          "text": "kweb-node-766f758887-j52jt",
+          "value": "kweb-node-766f758887-j52jt"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "prometheus"
-        },
-        "definition": "label_values(container_memory_usage_bytes{container=\"kweb-node\", }, namespace)",
-        "hide": 0,
-        "includeAll": false,
-        "label": "namespace",
-        "multi": false,
-        "multiFormat": "glob",
-        "name": "namespace",
-        "options": [],
-        "query": {
-          "query": "label_values(container_memory_usage_bytes{container=\"kweb-node\", }, namespace)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allFormat": "glob",
-        "current": {
-          "selected": false,
-          "text": "kweb-node-df7fb9498-njfml",
-          "value": "kweb-node-df7fb9498-njfml"
-        },
-        "definition": "label_values(container_memory_usage_bytes{container=\"kweb-node\",namespace=\"$namespace\" }, pod)",
+        "definition": "label_values(container_memory_usage_bytes{container=\"kweb-node\", }, pod)",
         "hide": 0,
         "includeAll": false,
         "label": "pod",
@@ -1675,7 +1617,7 @@
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(container_memory_usage_bytes{container=\"kweb-node\",namespace=\"$namespace\" }, pod)",
+          "query": "label_values(container_memory_usage_bytes{container=\"kweb-node\", }, pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
@@ -1693,10 +1635,6 @@
           "selected": false,
           "text": "All",
           "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "prometheus"
         },
         "definition": "label_values(jvm_memory_used_bytes{pod=\"$pod\", area=\"heap\"},id)",
         "hide": 0,
@@ -1725,10 +1663,6 @@
           "selected": false,
           "text": "All",
           "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "prometheus"
         },
         "definition": "label_values(jvm_memory_used_bytes{pod=\"$pod\", area=\"nonheap\"},id)",
         "hide": 0,
@@ -1785,7 +1719,7 @@
   },
   "timezone": "browser",
   "title": "kweb-node",
-  "uid": "kphn17q7z1111",
-  "version": 2,
+  "uid": "kweb-node",
+  "version": 15,
   "weekStart": ""
 }

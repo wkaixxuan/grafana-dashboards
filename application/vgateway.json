@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -19,7 +22,10 @@
         "type": "dashboard"
       },
       {
-        "datasource": "prometheus",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
         "enable": true,
         "expr": "resets(process_uptime_seconds{instance=\"$instance\"}[1m]) > 0",
         "iconColor": "rgba(255, 96, 96, 1)",
@@ -37,8 +43,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 13694,
   "graphTooltip": 1,
-  "id": 743,
-  "iteration": 1648115421894,
+  "id": 30,
+  "iteration": 1658999438787,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -57,6 +63,15 @@
       "id": 125,
       "panels": [],
       "repeat": "pod",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Quick Facts",
       "type": "row"
     },
@@ -112,11 +127,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "process_uptime_seconds{application=\"activity\", pod=\"$pod\"}",
+          "expr": "process_uptime_seconds{application='vgateway', pod='$pod'}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -194,11 +213,15 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "process_uptime_seconds{application='activity', pod=\"$pod\"}*1000",
+          "expr": "process_start_time_seconds{application='vgateway', pod='$pod'}*1000",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -214,10 +237,7 @@
     },
     {
       "alert": {
-        "alertRuleTags": {
-          "application": "kactivity",
-          "env": "vibra-prod"
-        },
+        "alertRuleTags": {},
         "conditions": [
           {
             "evaluator": {
@@ -250,6 +270,10 @@
         "name": "Cpu load 10s alert",
         "noDataState": "no_data",
         "notifications": []
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -330,8 +354,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "container_cpu_load_average_10s{container='kactivity', pod=\"$pod\"}",
+          "expr": "container_cpu_load_average_10s{container='vgateway', pod='$pod'}",
           "interval": "",
           "legendFormat": "cpu_load_{{pod}}",
           "refId": "A"
@@ -442,6 +470,10 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
           "expr": "sum(jvm_memory_used_bytes{ area=\"heap\"})*100/sum(jvm_memory_max_bytes{ area=\"heap\"})",
           "format": "time_series",
@@ -559,6 +591,10 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
           "expr": "sum(jvm_memory_used_bytes{ area=\"nonheap\"})*100/sum(jvm_memory_max_bytes{ area=\"nonheap\"})",
           "format": "time_series",
@@ -587,6 +623,15 @@
       "id": 129,
       "panels": [],
       "repeat": "pod",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "JVM Memory Pools (Heap)",
       "type": "row"
     },
@@ -635,7 +680,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "9.0.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -646,6 +691,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
           "expr": "jvm_memory_committed_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_heap\"}",
           "format": "time_series",
@@ -658,6 +707,10 @@
           "step": 1800
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
           "expr": "jvm_memory_max_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_heap\"}",
           "format": "time_series",
@@ -722,6 +775,15 @@
       },
       "id": 127,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "JVM Memory",
       "type": "row"
     },
@@ -769,8 +831,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -807,8 +868,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_memory_used_bytes{application=\"activity\", area=\"heap\"})",
+          "expr": "sum by (pod) (jvm_memory_used_bytes{application=\"vgateway\", area=\"heap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -818,8 +883,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_memory_committed_bytes{application=\"activity\", area=\"heap\"})",
+          "expr": "sum by (pod) (jvm_memory_committed_bytes{application=\"vgateway\", area=\"heap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -828,8 +897,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_memory_max_bytes{application=\"activity\", area=\"heap\"})",
+          "expr": "sum by (pod) (jvm_memory_max_bytes{application=\"vgateway\", area=\"heap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -885,8 +958,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -923,8 +995,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod)(jvm_memory_used_bytes{application='activity', area=\"nonheap\"})",
+          "expr": "sum by (pod)(jvm_memory_used_bytes{application='vgateway', area=\"nonheap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -934,8 +1010,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_memory_committed_bytes{application='activity', area=\"nonheap\"})",
+          "expr": "sum by (pod) (jvm_memory_committed_bytes{application='vgateway', area=\"nonheap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -944,8 +1024,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_memory_max_bytes{application='activity', area=\"nonheap\"})",
+          "expr": "sum by (pod) (jvm_memory_max_bytes{application='vgateway', area=\"nonheap\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1001,8 +1085,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1039,8 +1122,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_memory_used_bytes{application='activity'})",
+          "expr": "sum by (pod) (jvm_memory_used_bytes{application='vgateway'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1050,8 +1137,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_memory_committed_bytes{application='activity'})",
+          "expr": "sum by (pod) (jvm_memory_committed_bytes{application='vgateway'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1060,8 +1151,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_memory_max_bytes{application='activity'})",
+          "expr": "sum by (pod) (jvm_memory_max_bytes{application='vgateway'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1076,7 +1171,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -1112,6 +1207,10 @@
         "name": "Heap Usage 大于 80%",
         "noDataState": "no_data",
         "notifications": []
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1151,8 +1250,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1170,7 +1268,7 @@
               "options": {
                 "mode": "exclude",
                 "names": [
-                  "heap_usage_kactivity-blue-6c78794697-kf5s7"
+                  "heap_usage_vgateway-blue-79497dc845-7r8w7"
                 ],
                 "prefix": "All except:",
                 "readOnly": true
@@ -1209,8 +1307,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "(sum by (pod) (jvm_memory_used_bytes{application='activity', area='heap'})* 100) /sum by (pod) (jvm_memory_max_bytes{application='activity', area='heap'}) ",
+          "expr": "(sum by (pod) (jvm_memory_used_bytes{application='vgateway', area='heap'})* 100) /sum by (pod) (jvm_memory_max_bytes{application='vgateway', area='heap'}) ",
           "interval": "",
           "legendFormat": "heap_usage_{{pod}}",
           "refId": "HeapUsage"
@@ -1230,7 +1332,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -1266,6 +1368,10 @@
         "name": "Non Heap Usage is High",
         "noDataState": "no_data",
         "notifications": []
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1305,8 +1411,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1338,8 +1443,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "(sum by (pod) (jvm_memory_used_bytes{application='activity', area='nonheap'})* 100) /sum by (pod) (jvm_memory_max_bytes{application='activity', area='nonheap'}) ",
+          "expr": "(sum by (pod) (jvm_memory_used_bytes{application='vgateway', area='nonheap'})* 100) /sum by (pod) (jvm_memory_max_bytes{application='vgateway', area='nonheap'}) ",
           "interval": "",
           "legendFormat": "nonheap_usage_{{pod}}",
           "refId": "NonHeapUsage"
@@ -1371,6 +1480,15 @@
       "id": 130,
       "panels": [],
       "repeat": "pod",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "JVM Memory Pools (Non-Heap)",
       "type": "row"
     },
@@ -1430,6 +1548,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
           "expr": "jvm_memory_used_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_nonheap\"}",
           "format": "time_series",
@@ -1442,6 +1564,10 @@
           "step": 1800
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
           "expr": "jvm_memory_committed_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_nonheap\"}",
           "format": "time_series",
@@ -1454,6 +1580,10 @@
           "step": 1800
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
           "expr": "jvm_memory_max_bytes{pod=\"$pod\", id=\"$jvm_memory_pool_nonheap\"}",
           "format": "time_series",
@@ -1506,6 +1636,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1514,13 +1648,22 @@
       },
       "id": 165,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Dubbo Requests Overview",
       "type": "row"
     },
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -1556,6 +1699,10 @@
         "name": "Dubbo Request Success Rate is Low",
         "noDataState": "no_data",
         "notifications": []
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1597,8 +1744,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "red"
               },
               {
                 "color": "red",
@@ -1620,30 +1766,7 @@
           },
           "unit": "percentunit"
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 9,
@@ -1666,9 +1789,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "(sum by (pod, interface) (increase(dubbo_request_success_total{application='kactivity'}[2m])/120))/(sum by (pod, interface) (increase(dubbo_request_total{application='kactivity'}[2m])/120))",
-          "hide": false,
+          "expr": "(sum by (pod, interface) (increase(dubbo_request_success_total{application='vgateway'}[2m])/120))/(sum by (pod, interface) (increase(dubbo_request_total{application='vgateway'}[2m])/120))",
           "instant": false,
           "interval": "",
           "legendFormat": "{{pod}}_{{interface}}",
@@ -1689,7 +1815,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -1724,6 +1850,10 @@
         "name": "Dubbo Request Latency alert",
         "noDataState": "no_data",
         "notifications": []
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1763,8 +1893,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#6ED0E0",
@@ -1804,8 +1933,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod, interface, method) (dubbo_request_latency_seconds{application='kactivity', quantile='0.9'}*1000)",
+          "expr": "sum by (pod, interface, method) (dubbo_request_latency_seconds{application='vgateway', quantile='0.9'}*1000)",
           "interval": "",
           "legendFormat": "{{pod}}_{{interface}}.{{method}}",
           "refId": "A"
@@ -1825,7 +1958,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -1860,6 +1993,10 @@
         "name": "Dubbo Request Concurrent alert",
         "noDataState": "no_data",
         "notifications": []
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1899,8 +2036,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1931,8 +2067,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod, interface) (increase(dubbo_request_concurrent_total{application='kactivity'}[2m])/120)",
+          "expr": "sum by (pod, interface) (increase(dubbo_request_concurrent_total{application='vgateway'}[2m])/120)",
           "interval": "",
           "legendFormat": "{{pod}}_{{interface}}",
           "refId": "A"
@@ -1963,13 +2103,22 @@
       },
       "id": 126,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "HttpRequests Overview",
       "type": "row"
     },
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -2049,8 +2198,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -2090,8 +2238,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod, uri) (rate(http_server_requests_seconds_count{application='activity'}[2m]))",
+          "expr": "sum by (pod, uri) (rate(http_server_requests_seconds_count{application='vgateway'}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2113,7 +2265,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -2193,8 +2345,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -2238,8 +2389,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod, uri) (rate(http_server_requests_seconds_sum{application=\"kactivity\", status!~\"5..\"}[2m]))/sum by (pod, uri) (rate(http_server_requests_seconds_count{application=\"kactivity\", status!~\"5..\"}[2m]))",
+          "expr": "sum by (pod, uri) (rate(http_server_requests_seconds_sum{application=\"vgateway\", status!~\"5..\"}[2m]))/sum by (pod, uri) (rate(http_server_requests_seconds_count{application=\"vgateway\", status!~\"5..\"}[2m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2248,8 +2403,12 @@
           "refId": "avg_request_count"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "max by (pod, uri) (http_server_requests_seconds_max{application=\"kactivity\", status!~\"5..\"})",
+          "expr": "max by (pod, uri) (http_server_requests_seconds_max{application=\"vgateway\", status!~\"5..\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2272,7 +2431,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -2351,8 +2510,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -2431,8 +2589,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod, uri) (rate(http_server_requests_seconds_count{application=\"kactivity\", status=~\"5..\"}[2m]))",
+          "expr": "sum by (pod, uri) (rate(http_server_requests_seconds_count{application=\"vgateway\", status=~\"5..\"}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2465,13 +2627,22 @@
       },
       "id": 131,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Garbage Collection",
       "type": "row"
     },
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -2550,8 +2721,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2561,32 +2731,7 @@
           },
           "unit": "ops"
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "MajorGC_kactivity-blue-6c78794697-kf5s7"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 9,
@@ -2610,8 +2755,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod, action, cause) (rate(jvm_gc_pause_seconds_count{application=\"activity\"}[2m]))",
+          "expr": "avg by (pod, action, cause) (rate(jvm_gc_pause_seconds_count{application=\"vgateway\"}[2m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2620,8 +2769,12 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod, cause) (rate(jvm_gc_pause_seconds_count{application=\"activity\", action=\"end of major GC\"}[2m]))",
+          "expr": "avg by (pod, cause) (rate(jvm_gc_pause_seconds_count{application=\"vgateway\", action=\"end of major GC\"}[2m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "MajorGC_{{pod}}",
@@ -2642,7 +2795,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -2721,8 +2874,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2756,8 +2908,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod, action, cause) (rate(jvm_gc_pause_seconds_sum{application=\"activity\"}[2m])/rate(jvm_gc_pause_seconds_count{application=\"activity\"}[2m]))",
+          "expr": "avg by (pod, action, cause) (rate(jvm_gc_pause_seconds_sum{application=\"vgateway\"}[2m])/rate(jvm_gc_pause_seconds_count{application=\"vgateway\"}[2m]))",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2767,8 +2923,12 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod, action, cause) (jvm_gc_pause_seconds_max{application=\"kactivity\"})",
+          "expr": "avg by (pod, action, cause) (jvm_gc_pause_seconds_max{application=\"vgateway\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -2833,8 +2993,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2868,8 +3027,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (rate(jvm_gc_memory_allocated_bytes_total{application=\"activity\"}[2m]))",
+          "expr": "avg by (pod) (rate(jvm_gc_memory_allocated_bytes_total{application=\"vgateway\"}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2877,8 +3040,12 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (rate(jvm_gc_memory_promoted_bytes_total{application=\"activity\"}[2m]))",
+          "expr": "avg by (pod) (rate(jvm_gc_memory_promoted_bytes_total{application=\"vgateway\"}[2m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2903,13 +3070,22 @@
       },
       "id": 128,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Container",
       "type": "row"
     },
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -3036,8 +3212,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -3074,8 +3249,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (system_cpu_usage{application=\"activity\"})",
+          "expr": "avg by (pod) (system_cpu_usage{application=\"vgateway\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3086,8 +3265,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (process_cpu_usage{application=\"activity\"})",
+          "expr": "avg by (pod) (process_cpu_usage{application=\"vgateway\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3096,8 +3279,12 @@
           "refId": "process_cpu_usage"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (avg_over_time(process_cpu_usage{application=\"activity\"}[1h]))",
+          "expr": "avg by (pod) (avg_over_time(process_cpu_usage{application=\"vgateway\"}[1h]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3119,10 +3306,7 @@
     },
     {
       "alert": {
-        "alertRuleTags": {
-          "application": "kactivity",
-          "env": "vibra-prod"
-        },
+        "alertRuleTags": {},
         "conditions": [
           {
             "evaluator": {
@@ -3200,8 +3384,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -3238,8 +3421,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (system_load_average_1m{application='activity'})",
+          "expr": "avg by (pod) (system_load_average_1m{application='vgateway'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3249,21 +3436,17 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (system_cpu_count{application='activity'})",
+          "expr": "avg by (pod) (system_cpu_count{application='vgateway'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "cpu--{{pod}}",
           "refId": "C"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "op": "gt",
-          "value": 4,
-          "visible": true
         }
       ],
       "title": "Load",
@@ -3272,7 +3455,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -3352,8 +3535,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -3466,8 +3648,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "increase(log4j2_events_total{application='activity', level =~'error|warn'}[2m])",
+          "expr": "increase(log4j2_events_total{application='vgateway', level =~'error|warn'}[2m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3491,7 +3677,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -3569,8 +3755,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "yellow",
@@ -3702,8 +3887,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod, state) (jvm_threads_states_threads{application='activity'})",
+          "expr": "sum by (pod, state) (jvm_threads_states_threads{application='vgateway'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3711,8 +3900,12 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_threads_states_threads{application='activity', state=\"blocked\"})",
+          "expr": "sum by (pod) (jvm_threads_states_threads{application='vgateway', state=\"blocked\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "block_thread_{{pod}}",
@@ -3733,8 +3926,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
-          "env": "vibra-prod"
+          "application": "vgateway"
         },
         "conditions": [
           {
@@ -3882,8 +4074,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "yellow",
@@ -3924,8 +4115,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_threads_live_threads{application=\"activity\"})",
+          "expr": "sum by (pod) (jvm_threads_live_threads{application=\"vgateway\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3935,8 +4130,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": " sum by (pod) (jvm_threads_daemon_threads{application=\"activity\"})",
+          "expr": " sum by (pod) (jvm_threads_daemon_threads{application=\"vgateway\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3946,8 +4145,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": " sum by (pod) (jvm_threads_peak_threads{application=\"kactivity\"})",
+          "expr": " sum by (pod) (jvm_threads_peak_threads{application=\"vgateway\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3956,8 +4159,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (pod) (jvm_threads_states_threads{application=\"kactivity\"})",
+          "expr": "sum by (pod) (jvm_threads_states_threads{application=\"vgateway\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3980,7 +4187,7 @@
     {
       "alert": {
         "alertRuleTags": {
-          "application": "kactivity",
+          "application": "vgateway",
           "env": "vibra-prod"
         },
         "conditions": [
@@ -4032,12 +4239,16 @@
           }
         ],
         "executionErrorState": "keep_state",
-        "for": "5m",
+        "for": "1m",
         "frequency": "1m",
         "handler": 1,
         "name": "Pod Restart or OOM alert",
         "noDataState": "no_data",
         "notifications": []
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -4078,8 +4289,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4110,15 +4320,23 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (container) (increase(kube_pod_container_status_restarts_total{container='kactivity'}[10m]))",
+          "expr": "sum by (container) (increase(kube_pod_container_status_restarts_total{container='vgateway'}[10m]))",
           "interval": "",
           "legendFormat": "restart {{container}}",
           "refId": "restart"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "sum by (container) (increase(kube_pod_container_status_last_terminated_reason{container='kactivity', reason=\"OOMKilled\"}[10m]))",
+          "expr": "sum by (container) (increase(kube_pod_container_status_last_terminated_reason{container='vgateway', reason=\"OOMKilled\"}[10m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "OOM {{container}}",
@@ -4150,6 +4368,15 @@
       },
       "id": 132,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Classloading",
       "type": "row"
     },
@@ -4197,8 +4424,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4232,8 +4458,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": " sum by (pod) (jvm_classes_loaded_classes{application=\"activity\"})",
+          "expr": " sum by (pod) (jvm_classes_loaded_classes{application=\"vgateway\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4298,8 +4528,12 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": " sum by (pod) (delta(jvm_classes_loaded_classes{application=\"activity\"}[5m]))",
+          "expr": " sum by (pod) (delta(jvm_classes_loaded_classes{application=\"vgateway\"}[5m]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -4362,6 +4596,15 @@
       },
       "id": 133,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Buffer Pools",
       "type": "row"
     },
@@ -4409,8 +4652,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4444,8 +4686,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (jvm_buffer_memory_used_bytes{application=\"activity\", id=\"direct\"})",
+          "expr": "avg by (pod) (jvm_buffer_memory_used_bytes{application=\"vgateway\", id=\"direct\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4455,8 +4701,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "jvm_buffer_total_capacity_bytes{application=\"activity\", id=\"direct\"}",
+          "expr": "jvm_buffer_total_capacity_bytes{application=\"vgateway\", id=\"direct\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4514,8 +4764,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4549,8 +4798,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "jvm_buffer_count_buffers{application=\"activity\", id=\"direct\"}",
+          "expr": "jvm_buffer_count_buffers{application=\"vgateway\", id=\"direct\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4607,8 +4860,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4642,8 +4894,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (jvm_buffer_memory_used_bytes{application=\"activity\", id=\"mapped\"})",
+          "expr": "avg by (pod) (jvm_buffer_memory_used_bytes{application=\"vgateway\", id=\"mapped\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4653,8 +4909,12 @@
           "step": 2400
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (jvm_buffer_total_capacity_bytes{application=\"activity\", id=\"mapped\"})",
+          "expr": "avg by (pod) (jvm_buffer_total_capacity_bytes{application=\"vgateway\", id=\"mapped\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4712,8 +4972,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4747,8 +5006,12 @@
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "exemplar": true,
-          "expr": "avg by (pod) (jvm_buffer_count_buffers{application=\"activity\", id=\"mapped\"})",
+          "expr": "avg by (pod) (jvm_buffer_count_buffers{application=\"vgateway\", id=\"mapped\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4763,7 +5026,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 35,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -4772,14 +5035,14 @@
         "allFormat": "glob",
         "current": {
           "selected": false,
-          "text": "blue-kactivity-64d8456d5d-qcdmz",
-          "value": "blue-kactivity-64d8456d5d-qcdmz"
+          "text": "blue-vgateway-6bb4855948-sn97v",
+          "value": "blue-vgateway-6bb4855948-sn97v"
         },
         "datasource": {
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(container_memory_usage_bytes{container=\"kactivity\", }, pod)",
+        "definition": "label_values(container_memory_usage_bytes{container=\"vgateway\", }, pod)",
         "hide": 0,
         "includeAll": false,
         "label": "pod",
@@ -4788,7 +5051,7 @@
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(container_memory_usage_bytes{container=\"kactivity\", }, pod)",
+          "query": "label_values(container_memory_usage_bytes{container=\"vgateway\", }, pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
@@ -4897,8 +5160,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "kactivity",
-  "uid": "kactivity5678",
+  "title": "vgateway",
+  "uid": "vgateway678",
   "version": 1,
   "weekStart": ""
 }
