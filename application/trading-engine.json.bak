@@ -3,10 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": {
-          "type": "datasource",
-          "uid": "grafana"
-        },
+        "datasource": "-- Grafana --",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -22,10 +19,7 @@
         "type": "dashboard"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "prometheus"
-        },
+        "datasource": "prometheus",
         "enable": true,
         "expr": "resets(process_uptime_seconds{instance=\"$instance\"}[1m]) > 0",
         "iconColor": "rgba(255, 96, 96, 1)",
@@ -43,8 +37,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 13694,
   "graphTooltip": 1,
-  "id": 34,
-  "iteration": 1658990113614,
+  "id": 755,
+  "iteration": 1648115890645,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -118,7 +112,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
@@ -200,7 +194,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "exemplar": true,
@@ -253,10 +247,6 @@
         "name": "Cpu load 10s alert",
         "noDataState": "no_data",
         "notifications": []
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -642,7 +632,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1120,10 +1110,6 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1252,10 +1238,6 @@
         "name": "Non Heap Usage is High",
         "noDataState": "no_data",
         "notifications": []
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1409,7 +1391,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1496,10 +1478,6 @@
     },
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1550,10 +1528,6 @@
         "name": "Dubbo Request Success Rate is Low",
         "noDataState": "no_data",
         "notifications": []
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1723,10 +1697,6 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1862,10 +1832,6 @@
         "name": "Dubbo Request Concurrent alert",
         "noDataState": "no_data",
         "notifications": []
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3029,7 +2995,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3187,7 +3153,7 @@
         "alertThreshold": true
       },
       "percentage": true,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3578,71 +3544,6 @@
       "type": "timeseries"
     },
     {
-      "alert": {
-        "alertRuleTags": {
-          "application": "trading-engine",
-          "env": "kikitrade-prod"
-        },
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "restart",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "sum"
-            },
-            "type": "query"
-          },
-          {
-            "evaluator": {
-              "params": [
-                1
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "oom",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "sum"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "keep_state",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Pod Restart or OOM alert",
-        "noDataState": "no_data",
-        "notifications": []
-      },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3714,38 +3615,19 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
-          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (container) (increase(kube_pod_container_status_restarts_total{pod=~\"kiki-trading-engine.*\"}[10m]))",
-          "hide": false,
+          "expr": "sum by (container) (increase(kube_pod_container_status_restarts_total{container='trading-engine'}[10m]))",
           "interval": "",
-          "legendFormat": "restart {{pod}}",
-          "range": true,
-          "refId": "restart"
+          "legendFormat": "restart {{container}}",
+          "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
           "exemplar": true,
-          "expr": "kube_pod_container_status_last_terminated_reason{container=~'kiki-trading-engine.*',reason=\"OOMKilled\"}",
+          "expr": "kube_pod_container_status_last_terminated_reason{container='trading-engine', reason=\"OOMKilled\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "OOM {{pod}}",
-          "refId": "oom"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "op": "gt",
-          "value": 1,
-          "visible": true
+          "refId": "B"
         }
       ],
       "title": "Pod Restart or OOM",
@@ -3903,7 +3785,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "8.4.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -4378,7 +4260,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 36,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -4386,56 +4268,25 @@
       {
         "allFormat": "glob",
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "kikitrade-prod",
-          "value": "kikitrade-prod"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(up{job=~\".*trading-engine.*\"},namespace)",
+        "definition": "label_values(container_memory_usage_bytes{container=~\"trading-engine\", }, pod)",
         "hide": 0,
         "includeAll": false,
-        "label": "NameSpace",
-        "multi": false,
-        "multiFormat": "glob",
-        "name": "namespace",
-        "options": [],
-        "query": {
-          "query": "label_values(up{job=~\".*trading-engine.*\"},namespace)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allFormat": "glob",
-        "current": {
-          "selected": false,
-          "text": "kiki-trading-engine-4-0",
-          "value": "kiki-trading-engine-4-0"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "prometheus"
-        },
-        "definition": "label_values(up{job=~\".*trading-engine.*\",namespace=\"$namespace\" }, pod)",
-        "hide": 0,
-        "includeAll": false,
-        "label": "Pod",
+        "label": "pod",
         "multi": false,
         "multiFormat": "glob",
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(up{job=~\".*trading-engine.*\",namespace=\"$namespace\" }, pod)",
+          "query": "label_values(container_memory_usage_bytes{container=~\"trading-engine\", }, pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
