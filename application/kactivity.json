@@ -4015,7 +4015,7 @@
               "type": "gt"
             },
             "operator": {
-              "type": "and"
+              "type": "or"
             },
             "query": {
               "params": [
