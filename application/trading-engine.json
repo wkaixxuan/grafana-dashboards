@@ -1,47 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": [],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "8.5.3"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph (old)",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -67,7 +24,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
         "enable": true,
         "expr": "resets(process_uptime_seconds{instance=\"$instance\"}[1m]) > 0",
@@ -86,8 +43,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 13694,
   "graphTooltip": 1,
-  "id": null,
-  "iteration": 1658990579068,
+  "id": 66,
+  "iteration": 1658992923656,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -112,7 +69,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -173,8 +130,7 @@
           "legendFormat": "{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 14400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 14400
         }
       ],
       "title": "Uptime $pod",
@@ -183,7 +139,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -249,7 +205,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "process_start_time_seconds{application='trading-engine', pod='$pod'}*1000",
@@ -267,9 +223,44 @@
       "type": "stat"
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                3
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Cpu load 10s alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -352,7 +343,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "container_cpu_load_average_10s{container=~'.*trading-engine.*', pod='$pod'}",
@@ -375,7 +366,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -473,8 +464,7 @@
           "intervalFactor": 2,
           "legendFormat": "HeapUsed_$pod",
           "refId": "A",
-          "step": 14400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 14400
         }
       ],
       "title": " Heap used $pod",
@@ -483,7 +473,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -591,8 +581,7 @@
           "intervalFactor": 2,
           "legendFormat": "Non-HeapUsage_$pod",
           "refId": "A",
-          "step": 14400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 14400
         }
       ],
       "title": "Non-Heap used $pod",
@@ -623,7 +612,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "editable": true,
       "error": false,
@@ -681,8 +670,7 @@
           "legendFormat": "commited",
           "metric": "",
           "refId": "B",
-          "step": 1800,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 1800
         },
         {
           "exemplar": true,
@@ -694,8 +682,7 @@
           "legendFormat": "max",
           "metric": "",
           "refId": "C",
-          "step": 1800,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 1800
         }
       ],
       "thresholds": [],
@@ -756,7 +743,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -843,8 +830,7 @@
           "legendFormat": "heap_used_{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -854,8 +840,7 @@
           "intervalFactor": 2,
           "legendFormat": "committed_{{pod}}",
           "refId": "B",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -865,8 +850,7 @@
           "intervalFactor": 2,
           "legendFormat": "max_{{pod}}",
           "refId": "C",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         }
       ],
       "title": "JVM Heap",
@@ -875,7 +859,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -962,8 +946,7 @@
           "legendFormat": "used_{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -973,8 +956,7 @@
           "intervalFactor": 2,
           "legendFormat": "committed_{{pod}}",
           "refId": "B",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -984,8 +966,7 @@
           "intervalFactor": 2,
           "legendFormat": "max_{{pod}}",
           "refId": "C",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         }
       ],
       "title": "JVM Non-Heap",
@@ -994,7 +975,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1081,8 +1062,7 @@
           "legendFormat": "used_{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -1092,8 +1072,7 @@
           "intervalFactor": 2,
           "legendFormat": "committed_{{pod}}",
           "refId": "B",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -1103,17 +1082,55 @@
           "intervalFactor": 2,
           "legendFormat": "max_{{pod}}",
           "refId": "C",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         }
       ],
       "title": "JVM Total",
       "type": "timeseries"
     },
     {
+      "alert": {
+        "alertRuleTags": {
+          "application": "trading-engine",
+          "env": "vibra-prod"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "HeapUsage",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "",
+        "name": "Heap Usage 大于 80%",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1190,8 +1207,7 @@
           "expr": "(sum by (pod) (jvm_memory_used_bytes{application='trading-engine', area='heap'})* 100) /sum by (pod) (jvm_memory_max_bytes{application='trading-engine', area='heap'}) ",
           "interval": "",
           "legendFormat": "heap_usage_{{pod}}",
-          "refId": "HeapUsage",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "HeapUsage"
         }
       ],
       "thresholds": [
@@ -1206,9 +1222,48 @@
       "type": "timeseries"
     },
     {
+      "alert": {
+        "alertRuleTags": {
+          "application": "trading-engine",
+          "env": "vibra-prod"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                80
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "NonHeapUsage",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "",
+        "name": "Non Heap Usage is High",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1285,8 +1340,7 @@
           "expr": "(sum by (pod) (jvm_memory_used_bytes{application='trading-engine', area='nonheap'})* 100) /sum by (pod) (jvm_memory_max_bytes{application='trading-engine', area='nonheap'}) ",
           "interval": "",
           "legendFormat": "nonheap_usage_{{pod}}",
-          "refId": "NonHeapUsage",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "NonHeapUsage"
         }
       ],
       "thresholds": [
@@ -1325,7 +1379,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "editable": true,
       "error": false,
@@ -1383,8 +1437,7 @@
           "legendFormat": "used {{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 1800,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 1800
         },
         {
           "exemplar": true,
@@ -1396,8 +1449,7 @@
           "legendFormat": "commited  {{pod}}",
           "metric": "",
           "refId": "B",
-          "step": 1800,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 1800
         },
         {
           "exemplar": true,
@@ -1409,8 +1461,7 @@
           "legendFormat": "max  {{pod}}",
           "metric": "",
           "refId": "C",
-          "step": 1800,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 1800
         }
       ],
       "thresholds": [],
@@ -1469,9 +1520,48 @@
       "type": "row"
     },
     {
+      "alert": {
+        "alertRuleTags": {
+          "application": "trading-engine",
+          "env": "vibra-prod"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                80
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "DubboRequestRatre",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "",
+        "name": "Dubbo Request Success Rate is Low",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1588,8 +1678,7 @@
           "instant": false,
           "interval": "",
           "legendFormat": "{{pod}}_{{interface}}",
-          "refId": "DubboRequestRatre",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "DubboRequestRatre"
         }
       ],
       "thresholds": [
@@ -1604,9 +1693,47 @@
       "type": "timeseries"
     },
     {
+      "alert": {
+        "alertRuleTags": {
+          "application": "trading-engine",
+          "env": "vibra-prod"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                400
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Dubbo Request Latency alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1691,8 +1818,7 @@
           "expr": "sum by (pod, interface, method) (dubbo_request_latency_seconds{application='trading-engine', quantile='0.9'}*1000)",
           "interval": "",
           "legendFormat": "{{pod}}_{{interface}}.{{method}}",
-          "refId": "A",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "A"
         }
       ],
       "thresholds": [
@@ -1707,9 +1833,47 @@
       "type": "timeseries"
     },
     {
+      "alert": {
+        "alertRuleTags": {
+          "application": "trading-engine",
+          "env": "vibra-prod"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                500
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Dubbo Request Concurrent alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1785,8 +1949,7 @@
           "expr": "sum by (pod, interface) (increase(dubbo_request_concurrent_total{application='trading-engine'}[2m])/120)",
           "interval": "",
           "legendFormat": "{{pod}}_{{interface}}",
-          "refId": "A",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "A"
         }
       ],
       "thresholds": [
@@ -1818,9 +1981,48 @@
       "type": "row"
     },
     {
+      "alert": {
+        "alertRuleTags": {
+          "application": "trading-engine",
+          "env": "vibra-prod"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                500
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "{{uri}} is",
+        "name": "Http Request Rate is High",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1908,8 +2110,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "HTTP_{{pod}}_{{uri}}",
-          "refId": "A",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "A"
         }
       ],
       "thresholds": [
@@ -1924,9 +2125,48 @@
       "type": "timeseries"
     },
     {
+      "alert": {
+        "alertRuleTags": {
+          "application": "trading-engine",
+          "env": "vibra-prod"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                300
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "3m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "HTTP Request Duration > 300ms",
+        "name": "HTTP Request Duration > 300ms",
+        "noDataState": "keep_state",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2019,8 +2259,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "HTTP - AVG-  {{ pod}}-{{uri}}",
-          "refId": "A",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "A"
         },
         {
           "exemplar": true,
@@ -2030,8 +2269,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "HTTP - MAX  {{ pod}}-{{uri}}",
-          "refId": "B",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "B"
         }
       ],
       "thresholds": [
@@ -2046,9 +2284,44 @@
       "type": "timeseries"
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                50
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Errors alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2175,8 +2448,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "HTTP - 5xx- {{pod}}_{{uri}}",
-          "refId": "A",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "A"
         }
       ],
       "thresholds": [
@@ -2210,7 +2482,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2293,8 +2565,7 @@
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{action}} ({{cause}})_{{pod}}",
-          "refId": "A",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "A"
         }
       ],
       "title": "Collections",
@@ -2303,7 +2574,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2387,8 +2658,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "avg {{action}} ({{cause}})_{{pod}}",
-          "refId": "A",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "A"
         },
         {
           "exemplar": true,
@@ -2399,8 +2669,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "max {{action}} ({{cause}})_{{pod}}",
-          "refId": "B",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "B"
         }
       ],
       "title": "Pause Durations",
@@ -2409,7 +2678,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2491,8 +2760,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Young allocated_{{pod}}",
-          "refId": "A",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "A"
         },
         {
           "exemplar": true,
@@ -2501,8 +2769,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Old promoted_{{pod}}",
-          "refId": "B",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "B"
         }
       ],
       "title": "Allocated/Promoted",
@@ -2526,9 +2793,93 @@
       "type": "row"
     },
     {
+      "alert": {
+        "alertRuleTags": {
+          "application": "trading-engine",
+          "env": "vibra-prod"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                80
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "system_cpu_usage",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                80
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "process_cpu_usage",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                80
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "process_cpu_usage_1h",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "CPU alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2618,8 +2969,7 @@
           "legendFormat": "system_{{pod}}",
           "metric": "",
           "refId": "system_cpu_usage",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -2629,8 +2979,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "process_{{pod}}",
-          "refId": "process_cpu_usage",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "process_cpu_usage"
         },
         {
           "exemplar": true,
@@ -2640,8 +2989,7 @@
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "process-1h_{{pod}}",
-          "refId": "process_cpu_usage_1h",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "process_cpu_usage_1h"
         }
       ],
       "title": "CPU",
@@ -2654,7 +3002,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "editable": true,
       "error": false,
@@ -2707,8 +3055,7 @@
           "legendFormat": "system-1m-{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -2717,8 +3064,7 @@
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "cpu--{{pod}}",
-          "refId": "C",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -2762,6 +3108,41 @@
       }
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                200
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Log Events (2m)-Error alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "aliasColors": {
         "debug": "#1F78C1",
         "error": "#BF1B00",
@@ -2774,7 +3155,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "editable": true,
       "error": false,
@@ -2841,11 +3222,19 @@
           "legendFormat": "{{instance}}_{{level}}",
           "metric": "",
           "refId": "A",
-          "step": 1200,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 1200
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 200,
+          "visible": true
+        }
+      ],
       "timeRegions": [],
       "title": "Log Events (2m)-Error",
       "tooltip": {
@@ -2887,7 +3276,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3062,8 +3451,7 @@
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}_{{state}}",
-          "refId": "A",
-          "datasource": "${DS_PROMETHEUS}"
+          "refId": "A"
         }
       ],
       "title": "Thread States",
@@ -3072,7 +3460,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3160,8 +3548,7 @@
           "legendFormat": "live_{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -3172,8 +3559,7 @@
           "legendFormat": "daemon_{{pod}}",
           "metric": "",
           "refId": "B",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -3183,8 +3569,7 @@
           "intervalFactor": 2,
           "legendFormat": "peak_{{pod}}",
           "refId": "C",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -3194,17 +3579,77 @@
           "intervalFactor": 2,
           "legendFormat": "process_{{pod}}",
           "refId": "D",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         }
       ],
       "title": "Threads",
       "type": "timeseries"
     },
     {
+      "alert": {
+        "alertRuleTags": {
+          "application": "trading-engine",
+          "env": "vibra-prod"
+        },
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "sum"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "B",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "sum"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "keep_state",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Pod Restart or OOM alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -3279,7 +3724,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "sum by (container) (increase(kube_pod_container_status_restarts_total{pod='$pod'}[10m]))",
@@ -3290,10 +3735,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "kube_pod_container_status_last_terminated_reason{pod='$pod', reason=\"OOMKilled\"}",
+          "expr": "kube_pod_container_status_last_terminated_reason{pod='pod', reason=\"OOMKilled\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "OOM {{pod}}",
@@ -3331,7 +3776,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3415,8 +3860,7 @@
           "legendFormat": "loaded_{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 1200,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 1200
         }
       ],
       "title": "Classes loaded",
@@ -3429,7 +3873,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "editable": true,
       "error": false,
@@ -3483,8 +3927,7 @@
           "legendFormat": "delta_{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 1200,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 1200
         }
       ],
       "thresholds": [],
@@ -3545,7 +3988,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3629,8 +4072,7 @@
           "legendFormat": "used_{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -3641,8 +4083,7 @@
           "legendFormat": "capacity_{{pod}}",
           "metric": "",
           "refId": "B",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         }
       ],
       "title": "Direct Buffers",
@@ -3651,7 +4092,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3736,8 +4177,7 @@
           "legendFormat": "count",
           "metric": "",
           "refId": "A",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         }
       ],
       "title": "Direct Buffers",
@@ -3746,7 +4186,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3830,8 +4270,7 @@
           "legendFormat": "used_{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         },
         {
           "exemplar": true,
@@ -3842,8 +4281,7 @@
           "legendFormat": "capacity_{{pod}}",
           "metric": "",
           "refId": "B",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         }
       ],
       "title": "Mapped Buffers",
@@ -3852,7 +4290,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3937,8 +4375,7 @@
           "legendFormat": "count_{{pod}}",
           "metric": "",
           "refId": "A",
-          "step": 2400,
-          "datasource": "${DS_PROMETHEUS}"
+          "step": 2400
         }
       ],
       "title": "Mapped Buffers count",
@@ -3953,10 +4390,46 @@
     "list": [
       {
         "allFormat": "glob",
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "vibra-prod",
+          "value": "vibra-prod"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
+        },
+        "definition": "label_values(up{job=~\".*trading-engine.*\"},namespace)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "namespace",
+        "multi": false,
+        "multiFormat": "glob",
+        "name": "namespace",
+        "options": [],
+        "query": {
+          "query": "label_values(up{job=~\".*trading-engine.*\"},namespace)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allFormat": "glob",
+        "current": {
+          "selected": false,
+          "text": "kiki-trading-engine-5-0",
+          "value": "kiki-trading-engine-5-0"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
         },
         "definition": "label_values(up{job=~\".*trading-engine.*\", namespace=\"$namespace\"},pod)",
         "hide": 0,
@@ -3981,10 +4454,14 @@
       },
       {
         "allFormat": "glob",
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
         "definition": "label_values(jvm_memory_used_bytes{pod=\"$pod\", area=\"heap\"},id)",
         "hide": 0,
@@ -4009,10 +4486,14 @@
       },
       {
         "allFormat": "glob",
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
         "definition": "label_values(jvm_memory_used_bytes{pod=\"$pod\", area=\"nonheap\"},id)",
         "hide": 0,
@@ -4030,34 +4511,6 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 2,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allFormat": "glob",
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(up{job=~\".*trading-engine-.*\"},namespace)",
-        "hide": 0,
-        "includeAll": false,
-        "label": "namespace",
-        "multi": false,
-        "multiFormat": "glob",
-        "name": "namespace",
-        "options": [],
-        "query": {
-          "query": "label_values(up{job=~\".*trading-engine-.*\"},namespace)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
         "tagValuesQuery": "",
         "tagsQuery": "",
         "type": "query",
@@ -4097,7 +4550,7 @@
   },
   "timezone": "browser",
   "title": "trading-engine",
-  "uid": "6ql30GzVk",
-  "version": 1,
+  "uid": "trading-engine67890",
+  "version": 4,
   "weekStart": ""
 }
