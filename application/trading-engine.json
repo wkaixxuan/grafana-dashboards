@@ -3720,10 +3720,10 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (container) (increase(kube_pod_container_status_restarts_total{pod=~\"kiki-trading-engine.*\"}[10m]))",
+          "expr": "sum by (container) (increase(kube_pod_container_status_restarts_total{container=~'kiki-trading-engine.*'}[10m]))",
           "hide": false,
           "interval": "",
-          "legendFormat": "restart {{pod}}",
+          "legendFormat": "restart {{container}}",
           "range": true,
           "refId": "restart"
         },
@@ -3733,7 +3733,7 @@
             "uid": "prometheus"
           },
           "exemplar": true,
-          "expr": "kube_pod_container_status_last_terminated_reason{container=~'kiki-trading-engine.*',reason=\"OOMKilled\"}",
+          "expr": "kube_pod_container_status_last_terminated_reason{pod=~'kiki-trading-engine.*',reason=\"OOMKilled\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "OOM {{pod}}",
