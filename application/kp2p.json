@@ -1613,7 +1613,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg without (host, method) (dubbo_request_success_rate{application='kp2p', quantile='0.9'} or vector(100))",
+          "expr": "(sum by (pod, interface) (increase(dubbo_request_success_total{application='kpay'}[2m])/120))/(sum by (pod, interface) (increase(dubbo_request_total{application='kpay'}[2m])/120))",
           "instant": false,
           "interval": "",
           "legendFormat": "{{pod}}_{{interface}}",

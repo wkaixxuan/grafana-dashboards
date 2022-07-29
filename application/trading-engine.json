@@ -338,7 +338,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "container_cpu_load_average_10s{container='trading-engine', pod='$pod'}",
+          "expr": "container_cpu_load_average_10s{container=~'.*trading-engine.*', pod='$pod'}",
           "interval": "",
           "legendFormat": "cpu_load_{{pod}}",
           "refId": "A"
