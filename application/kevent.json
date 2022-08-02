@@ -1680,7 +1680,7 @@
             "query": {
               "params": [
                 "DubboRequestRate",
-                "5m",
+                "10m",
                 "now"
               ]
             },
@@ -1693,7 +1693,7 @@
         ],
         "executionErrorState": "keep_state",
         "for": "5m",
-        "frequency": "1m",
+        "frequency": "5m",
         "handler": 1,
         "message": "",
         "name": "Dubbo Request Success Rate is Low",
@@ -2812,7 +2812,7 @@
             "query": {
               "params": [
                 "A",
-                "5m",
+                "10m",
                 "now"
               ]
             },
@@ -2825,7 +2825,7 @@
         ],
         "executionErrorState": "alerting",
         "for": "5m",
-        "frequency": "1m",
+        "frequency": "5m",
         "handler": 1,
         "name": "Pause Durations is High",
         "noDataState": "no_data",

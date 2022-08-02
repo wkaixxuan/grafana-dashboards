@@ -2582,7 +2582,7 @@
             "query": {
               "params": [
                 "A",
-                "5m",
+                "10m",
                 "now"
               ]
             },
@@ -2595,7 +2595,7 @@
         ],
         "executionErrorState": "alerting",
         "for": "5m",
-        "frequency": "1m",
+        "frequency": "5m",
         "handler": 1,
         "name": "Pause Durations is High",
         "noDataState": "no_data",
